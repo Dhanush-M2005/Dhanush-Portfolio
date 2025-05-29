@@ -1,0 +1,331 @@
+/* ===== ABOUT SECTION ===== */
+.about {
+  padding: 4rem 0;
+  animation: fadeIn 1s ease-in;
+}
+
+.about-section {
+  padding: 5rem 1.5rem;
+  color: #f1f5f9;
+  text-align: center;
+}
+
+/* ===== Section Heading ===== */
+.about-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f97316;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.icon-style {
+  color: #f97316;
+  font-size: 1.8rem;
+  animation: iconFloat 2s ease-in-out infinite;
+}
+
+/* ===== Tabs ===== */
+.about-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.about-tab {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-tab.active,
+.about-tab:hover {
+  background-color: #facc15;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* ===== About Content Card ===== */
+.about-card-full {
+  background-color: #1e293b;
+  border-radius: 12px;
+  border-top: 4px solid #facc15;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.about-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.about-left {
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  border: 3px solid #facc15;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.about-right {
+  flex: 1;
+  text-align: left;
+}
+
+.about-right h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.about-right p {
+  font-size: 1rem;
+  color: #f1f5f9;
+  line-height: 1.8;
+}
+
+.about-bottom {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.about-bottom h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.about-bottom p {
+  font-size: 1rem;
+  color: #f1f5f9;
+  line-height: 1.8;
+}
+
+/* ===== Skills Grid Cards ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.skill-card {
+  background-color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-top: 4px solid #facc15;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+}
+
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.skill-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.skill-content p {
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+/* ===== Facts Heading ===== */
+.facts-heading {
+  max-width: 1100px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.facts-heading h3 {
+  font-size: 1.8rem;
+  color: #f97316;
+  font-weight: 700;
+}
+
+.facts-icon {
+  font-size: 2rem;
+}
+
+/* ===== Facts Grid Cards (Same Style as Skills) ===== */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.fact-card {
+  background-color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-top: 4px solid #facc15;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.fact-card:hover {
+  transform: translateY(-6px);
+}
+
+.fact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.fact-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.fact-content p {
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+/* ===== Color Utility Classes ===== */
+.purple {
+  background-color: #8b5cf6;
+}
+
+.orange {
+  background-color: #f97316;
+}
+
+.green {
+  background-color: #10b981;
+}
+
+.pink {
+  background-color: #ec4899;
+}
+
+.violet {
+  background-color: #7c3aed;
+}
+
+/* ===== Title Color Helpers ===== */
+.yellow-title {
+  color: #facc15;
+}
+
+.blue-title {
+  color: #3b82f6;
+}
+
+.green-title {
+  color: #22c55e;
+}
+
+/* ===== Icon Animation ===== */
+@keyframes iconFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .about-header-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-right {
+    text-align: center;
+  }
+
+  .about-bottom {
+    text-align: left;
+  }
+
+  .avatar-img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-tab {
+    width: 100%;
+    text-align: center;
+  }
+}

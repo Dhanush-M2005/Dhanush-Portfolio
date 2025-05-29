@@ -1,0 +1,143 @@
+/* App.css - Global Base and Layout Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color Scheme */
+  --primary-color: #0f172a;
+  --secondary-color: #8b5cf6;
+  --accent-color: #facc15;
+  --highlight-color: #f97316;
+  --hover-color: #7c3aed;
+  --background-color: #ffffff;
+  --text-color: #f1f5f9;
+  --light-gray: #e2e8f0;
+
+  /* Typography */
+  --heading-font: 'Poppins', sans-serif;
+  --body-font: 'Poppins', sans-serif;
+  --base-font-size: 16px;
+
+  /* Layout */
+  --section-padding: 4rem;
+  --container-width: 1200px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--body-font);
+}
+
+/* Body and global font */
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: var(--base-font-size);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--text-color);
+  line-height: 1.25;
+}
+
+/* Anchor Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Global Button Styles */
+.button {
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--secondary-color), var(--hover-color));
+  color: #ffffff;
+  border: none;
+}
+
+.button-primary:hover {
+  background: linear-gradient(135deg, var(--hover-color), #6d28d9);
+  transform: translateY(-2px);
+}
+
+.button-outline {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.button-outline:hover {
+  background: var(--accent-color);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Section Layout */
+section {
+  padding: var(--section-padding) 1.5rem;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  :root {
+    --base-font-size: 15px;
+    --section-padding: 3rem;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --base-font-size: 14px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animation Utility */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* NOTE: Component styles must be kept in their own files */
+/* For example: Home.css, Projects.css, Contact.css, etc. */

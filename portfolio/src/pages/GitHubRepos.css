@@ -1,0 +1,118 @@
+:root {
+  --color-primary: #f97316;       /* Orange */
+  --color-secondary: #8b5cf6;     /* Purple */
+  --color-text-main: #e5e7eb;
+  --color-muted: #94a3b8;
+  --bg-card: #1e293b;
+  --bg-dark: #0f172a;
+  --color-border: #facc15;
+}
+
+/* Container */
+.github-repos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+/* Card */
+.repo-card {
+  background-color: var(--bg-card);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 4px solid var( --color-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.repo-card:hover {
+ transform: translateY(-5px);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+}
+
+/* Header */
+.repo-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--color-text-main);
+}
+
+/* Description */
+.repo-description {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Meta: Stars, Forks, Language */
+.repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--color-text-main);
+  margin-top: auto;
+}
+
+/* Language Badge */
+.language-badge {
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.language-badge:hover {
+  transform: scale(1.05);
+}
+
+/* GitHub Link */
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.repo-link:hover {
+  color: var(--color-primary);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .github-repos-grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .repo-card {
+    width: 100%;
+  }
+}
