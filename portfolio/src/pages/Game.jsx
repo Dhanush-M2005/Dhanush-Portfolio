@@ -20,7 +20,16 @@ function TicTacToe() {
   const [board, setBoard] = useState(initialBoard);
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [mode, setMode] = useState('ai');
-  const winner = checkWinner(board);
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    const currentWinner = checkWinner(board);
+    if (currentWinner) {
+      setWinner(currentWinner);
+    } else if (board.every(Boolean)) {
+      setWinner('draw');
+    }
+  }, [board]);
 
   useEffect(() => {
     if (mode === 'ai' && !isPlayerTurn && !winner) {
@@ -36,8 +45,8 @@ function TicTacToe() {
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
-    const newBoard = [...board];
 
+    const newBoard = [...board];
     if (mode === '2p') {
       newBoard[index] = isPlayerTurn ? PLAYER : OPPONENT;
       setBoard(newBoard);
@@ -57,14 +66,9 @@ function TicTacToe() {
 
   function checkWinner(b) {
     const lines = [
-      [0, 1, 2], // rows
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6], // columns
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8], // diagonals
-      [2, 4, 6]
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+      [0, 4, 8], [2, 4, 6]             // diagonals
     ];
     for (let [a, b1, c] of lines) {
       if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
@@ -77,18 +81,20 @@ function TicTacToe() {
   function resetGame() {
     setBoard(initialBoard);
     setIsPlayerTurn(true);
+    setWinner(null);
   }
-
-  const isDraw = !winner && board.every(Boolean);
 
   return (
     <div className="tic-tac-toe">
-      <div className="tic-header">
-        <select value={mode} onChange={(e) => setMode(e.target.value)} className="mode-select">
-          <option value="ai">Player vs AI</option>
-          <option value="2p">2 Player</option>
-        </select>
-      </div>
+      <h2 className="title">📈 vs 📉 - Market Match</h2>
+      <select
+        value={mode}
+        onChange={(e) => setMode(e.target.value)}
+        className="mode-select"
+      >
+        <option value="ai">Player vs AI</option>
+        <option value="2p">2 Player</option>
+      </select>
 
       <div className="board">
         {board.map((cell, i) => (
@@ -99,10 +105,10 @@ function TicTacToe() {
       </div>
 
       <div className="ttt-status">
-        {winner
-          ? `${winner} wins! 💥`
-          : isDraw
+        {winner === 'draw'
           ? 'Draw 🤝'
+          : winner
+          ? `${winner} wins! 💥`
           : `Next: ${isPlayerTurn ? PLAYER : OPPONENT}`}
         <button onClick={resetGame} className="ttt-reset">🔁 Restart</button>
       </div>
