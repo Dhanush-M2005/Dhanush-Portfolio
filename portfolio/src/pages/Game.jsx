@@ -13,26 +13,17 @@ const generateLevelMap = (start = 1, count = LEVELS_PER_PAGE) => {
   return levels;
 };
 
-function TicTacToe() {
-  const PLAYER = '📈';
-  const OPPONENT = '📉';
+export default function TicTacToe() {
+  const PLAYER = "📈";
+  const OPPONENT = "📉";
   const initialBoard = Array(9).fill(null);
   const [board, setBoard] = useState(initialBoard);
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
-  const [mode, setMode] = useState('ai');
-  const [winner, setWinner] = useState(null);
+  const [mode, setMode] = useState("ai");
+  const winner = checkWinner(board);
 
   useEffect(() => {
-    const currentWinner = checkWinner(board);
-    if (currentWinner) {
-      setWinner(currentWinner);
-    } else if (board.every(Boolean)) {
-      setWinner('draw');
-    }
-  }, [board]);
-
-  useEffect(() => {
-    if (mode === 'ai' && !isPlayerTurn && !winner) {
+    if (mode === "ai" && !isPlayerTurn && !winner) {
       const aiMove = getAIMove(board);
       if (aiMove !== -1) {
         const newBoard = [...board];
@@ -45,9 +36,9 @@ function TicTacToe() {
 
   const handleClick = (index) => {
     if (board[index] || winner) return;
-
     const newBoard = [...board];
-    if (mode === '2p') {
+
+    if (mode === "2p") {
       newBoard[index] = isPlayerTurn ? PLAYER : OPPONENT;
       setBoard(newBoard);
       setIsPlayerTurn(!isPlayerTurn);
@@ -60,19 +51,33 @@ function TicTacToe() {
   };
 
   function getAIMove(board) {
-    const emptyIndices = board.map((v, i) => (v ? null : i)).filter(v => v !== null);
+    const emptyIndices = board
+      .map((v, i) => (v ? null : i))
+      .filter((v) => v !== null);
     return emptyIndices[Math.floor(Math.random() * emptyIndices.length)] ?? -1;
+  }
+
+  function normalize(s) {
+    return s?.normalize("NFKD").trim?.();
   }
 
   function checkWinner(b) {
     const lines = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
-      [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
-      [0, 4, 8], [2, 4, 6]             // diagonals
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
     ];
     for (let [a, b1, c] of lines) {
-      if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
-        return b[a];
+      const cellA = normalize(b[a]);
+      const cellB = normalize(b[b1]);
+      const cellC = normalize(b[c]);
+      if (cellA && cellA === cellB && cellA === cellC) {
+        return cellA;
       }
     }
     return null;
@@ -81,37 +86,51 @@ function TicTacToe() {
   function resetGame() {
     setBoard(initialBoard);
     setIsPlayerTurn(true);
-    setWinner(null);
   }
 
+  const isDraw = !winner && board.every(Boolean);
+
   return (
-    <div className="tic-tac-toe">
-      <h2 className="title">📈 vs 📉 - Market Match</h2>
+    <div className="tic-tac-toe text-center p-4 max-w-md mx-auto rounded-xl border-4 border-yellow-500 shadow-lg bg-[#1a1b2f] text-white">
+      <h2 className="text-2xl font-bold mb-2">
+        {PLAYER} vs {OPPONENT} - Market Match
+      </h2>
       <select
         value={mode}
         onChange={(e) => setMode(e.target.value)}
-        className="mode-select"
+        className="mb-4 p-2 bg-yellow-400 text-black font-semibold rounded"
       >
         <option value="ai">Player vs AI</option>
         <option value="2p">2 Player</option>
       </select>
-
-      <div className="board">
+      <div className="grid grid-cols-3 gap-2 mb-4">
         {board.map((cell, i) => (
-          <button key={i} onClick={() => handleClick(i)} className="ttt-cell">
-            <span className="ttt-icon">{cell}</span>
+          <button
+            key={i}
+            onClick={() => handleClick(i)}
+            className="w-20 h-20 text-3xl bg-[#2d2f45] border-4 border-yellow-500 rounded flex items-center justify-center"
+          >
+            {cell}
           </button>
         ))}
       </div>
-
-      <div className="ttt-status">
-        {winner === 'draw'
-          ? 'Draw 🤝'
-          : winner
-          ? `${winner} wins! 💥`
-          : `Next: ${isPlayerTurn ? PLAYER : OPPONENT}`}
-        <button onClick={resetGame} className="ttt-reset">🔁 Restart</button>
+      <div className="text-lg font-semibold">
+        {winner ? (
+          <>
+            {winner} wins! 🎉
+          </>
+        ) : isDraw ? (
+          <>Draw 🤝</>
+        ) : (
+          <>Next: {isPlayerTurn ? PLAYER : OPPONENT}</>
+        )}
       </div>
+      <button
+        onClick={resetGame}
+        className="mt-3 px-4 py-2 bg-yellow-400 text-black rounded font-bold"
+      >
+        🔁 Restart
+      </button>
     </div>
   );
 }
