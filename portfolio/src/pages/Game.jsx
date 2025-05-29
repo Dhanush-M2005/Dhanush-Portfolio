@@ -14,28 +14,16 @@ const generateLevelMap = (start = 1, count = LEVELS_PER_PAGE) => {
 };
 
 function TicTacToe() {
-  const PLAYER = "UP";
-  const OPPONENT = "DOWN";
-  const EMOJI_MAP = {
-    UP: "📈",
-    DOWN: "📉",
-  };
-
+  const PLAYER = '📈';
+  const OPPONENT = '📉';
   const initialBoard = Array(9).fill(null);
   const [board, setBoard] = useState(initialBoard);
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
-  const [mode, setMode] = useState("ai");
-  const [winner, setWinner] = useState(null);
-
-  const isDraw = !winner && board.every(Boolean);
+  const [mode, setMode] = useState('ai');
+  const winner = checkWinner(board);
 
   useEffect(() => {
-    const result = checkWinner(board);
-    if (result) setWinner(result);
-  }, [board]);
-
-  useEffect(() => {
-    if (mode === "ai" && !isPlayerTurn && !winner) {
+    if (mode === 'ai' && !isPlayerTurn && !winner) {
       const aiMove = getAIMove(board);
       if (aiMove !== -1) {
         const newBoard = [...board];
@@ -50,7 +38,7 @@ function TicTacToe() {
     if (board[index] || winner) return;
     const newBoard = [...board];
 
-    if (mode === "2p") {
+    if (mode === '2p') {
       newBoard[index] = isPlayerTurn ? PLAYER : OPPONENT;
       setBoard(newBoard);
       setIsPlayerTurn(!isPlayerTurn);
@@ -63,22 +51,20 @@ function TicTacToe() {
   };
 
   function getAIMove(board) {
-    const empty = board
-      .map((v, i) => (v === null ? i : null))
-      .filter((v) => v !== null);
-    return empty[Math.floor(Math.random() * empty.length)] ?? -1;
+    const emptyIndices = board.map((v, i) => (v ? null : i)).filter(v => v !== null);
+    return emptyIndices[Math.floor(Math.random() * emptyIndices.length)] ?? -1;
   }
 
   function checkWinner(b) {
     const lines = [
-      [0, 1, 2],
+      [0, 1, 2], // rows
       [3, 4, 5],
       [6, 7, 8],
-      [0, 3, 6],
+      [0, 3, 6], // columns
       [1, 4, 7],
       [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
+      [0, 4, 8], // diagonals
+      [2, 4, 6]
     ];
     for (let [a, b1, c] of lines) {
       if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
@@ -88,53 +74,38 @@ function TicTacToe() {
     return null;
   }
 
-  const resetGame = () => {
+  function resetGame() {
     setBoard(initialBoard);
     setIsPlayerTurn(true);
-    setWinner(null);
-  };
+  }
+
+  const isDraw = !winner && board.every(Boolean);
 
   return (
-    <div className="tic-tac-toe text-center p-4 max-w-md mx-auto rounded-xl border-4 border-yellow-500 shadow-lg bg-[#1a1b2f] text-white">
-      <h2 className="text-2xl font-bold mb-2">
-        {EMOJI_MAP[PLAYER]} vs {EMOJI_MAP[OPPONENT]} - Market Match
-      </h2>
-      <select
-        value={mode}
-        onChange={(e) => setMode(e.target.value)}
-        className="mb-4 p-2 bg-yellow-400 text-black font-semibold rounded"
-      >
-        <option value="ai">Player vs AI</option>
-        <option value="2p">2 Player</option>
-      </select>
-      <div className="grid grid-cols-3 gap-2 mb-4">
-        {board.map((cell, index) => (
-          <button
-            key={index}
-            onClick={() => handleClick(index)}
-            className="w-20 h-20 text-3xl bg-[#2d2f45] border-4 border-yellow-500 rounded flex items-center justify-center"
-          >
-            {cell ? EMOJI_MAP[cell] : ""}
+    <div className="tic-tac-toe">
+      <div className="tic-header">
+        <select value={mode} onChange={(e) => setMode(e.target.value)} className="mode-select">
+          <option value="ai">Player vs AI</option>
+          <option value="2p">2 Player</option>
+        </select>
+      </div>
+
+      <div className="board">
+        {board.map((cell, i) => (
+          <button key={i} onClick={() => handleClick(i)} className="ttt-cell">
+            <span className="ttt-icon">{cell}</span>
           </button>
         ))}
       </div>
-      <div className="text-lg font-semibold">
-        {winner ? (
-          <>
-            {EMOJI_MAP[winner]} wins! 🎉
-          </>
-        ) : isDraw ? (
-          <>Draw 🤝</>
-        ) : (
-          <>Next: {EMOJI_MAP[isPlayerTurn ? PLAYER : OPPONENT]}</>
-        )}
+
+      <div className="ttt-status">
+        {winner
+          ? `${winner} wins! 💥`
+          : isDraw
+          ? 'Draw 🤝'
+          : `Next: ${isPlayerTurn ? PLAYER : OPPONENT}`}
+        <button onClick={resetGame} className="ttt-reset">🔁 Restart</button>
       </div>
-      <button
-        onClick={resetGame}
-        className="mt-3 px-4 py-2 bg-yellow-400 text-black rounded font-bold"
-      >
-        🔁 Restart
-      </button>
     </div>
   );
 }
