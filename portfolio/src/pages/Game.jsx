@@ -13,14 +13,26 @@ const generateLevelMap = (start = 1, count = LEVELS_PER_PAGE) => {
   return levels;
 };
 
-export default function TicTacToe() {
-  const PLAYER = "📈";
-  const OPPONENT = "📉";
+function TicTacToe() {
+  const PLAYER = "UP";
+  const OPPONENT = "DOWN";
+  const EMOJI_MAP = {
+    UP: "📈",
+    DOWN: "📉",
+  };
+
   const initialBoard = Array(9).fill(null);
   const [board, setBoard] = useState(initialBoard);
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [mode, setMode] = useState("ai");
-  const winner = checkWinner(board);
+  const [winner, setWinner] = useState(null);
+
+  const isDraw = !winner && board.every(Boolean);
+
+  useEffect(() => {
+    const result = checkWinner(board);
+    if (result) setWinner(result);
+  }, [board]);
 
   useEffect(() => {
     if (mode === "ai" && !isPlayerTurn && !winner) {
@@ -51,14 +63,10 @@ export default function TicTacToe() {
   };
 
   function getAIMove(board) {
-    const emptyIndices = board
-      .map((v, i) => (v ? null : i))
+    const empty = board
+      .map((v, i) => (v === null ? i : null))
       .filter((v) => v !== null);
-    return emptyIndices[Math.floor(Math.random() * emptyIndices.length)] ?? -1;
-  }
-
-  function normalize(s) {
-    return s?.normalize("NFKD").trim?.();
+    return empty[Math.floor(Math.random() * empty.length)] ?? -1;
   }
 
   function checkWinner(b) {
@@ -73,27 +81,23 @@ export default function TicTacToe() {
       [2, 4, 6],
     ];
     for (let [a, b1, c] of lines) {
-      const cellA = normalize(b[a]);
-      const cellB = normalize(b[b1]);
-      const cellC = normalize(b[c]);
-      if (cellA && cellA === cellB && cellA === cellC) {
-        return cellA;
+      if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
+        return b[a];
       }
     }
     return null;
   }
 
-  function resetGame() {
+  const resetGame = () => {
     setBoard(initialBoard);
     setIsPlayerTurn(true);
-  }
-
-  const isDraw = !winner && board.every(Boolean);
+    setWinner(null);
+  };
 
   return (
     <div className="tic-tac-toe text-center p-4 max-w-md mx-auto rounded-xl border-4 border-yellow-500 shadow-lg bg-[#1a1b2f] text-white">
       <h2 className="text-2xl font-bold mb-2">
-        {PLAYER} vs {OPPONENT} - Market Match
+        {EMOJI_MAP[PLAYER]} vs {EMOJI_MAP[OPPONENT]} - Market Match
       </h2>
       <select
         value={mode}
@@ -104,25 +108,25 @@ export default function TicTacToe() {
         <option value="2p">2 Player</option>
       </select>
       <div className="grid grid-cols-3 gap-2 mb-4">
-        {board.map((cell, i) => (
+        {board.map((cell, index) => (
           <button
-            key={i}
-            onClick={() => handleClick(i)}
+            key={index}
+            onClick={() => handleClick(index)}
             className="w-20 h-20 text-3xl bg-[#2d2f45] border-4 border-yellow-500 rounded flex items-center justify-center"
           >
-            {cell}
+            {cell ? EMOJI_MAP[cell] : ""}
           </button>
         ))}
       </div>
       <div className="text-lg font-semibold">
         {winner ? (
           <>
-            {winner} wins! 🎉
+            {EMOJI_MAP[winner]} wins! 🎉
           </>
         ) : isDraw ? (
           <>Draw 🤝</>
         ) : (
-          <>Next: {isPlayerTurn ? PLAYER : OPPONENT}</>
+          <>Next: {EMOJI_MAP[isPlayerTurn ? PLAYER : OPPONENT]}</>
         )}
       </div>
       <button
