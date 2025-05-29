@@ -37,6 +37,7 @@ function TicTacToe() {
   const handleClick = (index) => {
     if (board[index] || winner) return;
     const newBoard = [...board];
+
     if (mode === '2p') {
       newBoard[index] = isPlayerTurn ? PLAYER : OPPONENT;
       setBoard(newBoard);
@@ -56,9 +57,14 @@ function TicTacToe() {
 
   function checkWinner(b) {
     const lines = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8],
-      [0, 3, 6], [1, 4, 7], [2, 5, 8],
-      [0,4,8],[2,4,6]
+      [0, 1, 2], // rows
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6], // columns
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8], // diagonals
+      [2, 4, 6]
     ];
     for (let [a, b1, c] of lines) {
       if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
@@ -83,6 +89,7 @@ function TicTacToe() {
           <option value="2p">2 Player</option>
         </select>
       </div>
+
       <div className="board">
         {board.map((cell, i) => (
           <button key={i} onClick={() => handleClick(i)} className="ttt-cell">
@@ -90,11 +97,12 @@ function TicTacToe() {
           </button>
         ))}
       </div>
+
       <div className="ttt-status">
         {winner
           ? `${winner} wins! 💥`
           : isDraw
-          ? "Draw 🤝"
+          ? 'Draw 🤝'
           : `Next: ${isPlayerTurn ? PLAYER : OPPONENT}`}
         <button onClick={resetGame} className="ttt-reset">🔁 Restart</button>
       </div>
