@@ -115,6 +115,10 @@
 }
 
 @media (max-width: 768px) {
+
+  .navbar{
+    background-color: #0A1021;
+  }
   .nav-links {
     position: fixed;
     top: 70px;
@@ -160,6 +164,10 @@
 }
 
 @media (max-width: 480px) {
+
+  .navbar{
+    background-color: #0A1021;
+  }
   .nav-container {
     padding: 0 1rem;
   }
