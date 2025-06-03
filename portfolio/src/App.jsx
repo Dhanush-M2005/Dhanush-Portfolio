@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import './App.css';
 import Home from './pages/Home';
 import Game from './pages/Game';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -48,6 +49,7 @@ function App() {
           <Route path="/game" element={<Game />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Chatbot />
       </div>
     </BrowserRouter>
   );
