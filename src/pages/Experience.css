@@ -317,24 +317,38 @@
 }
 
 @media (max-width: 480px) {
+    .experience-section {
+        padding: 2rem 1rem;
+    }
+
     .exp-timeline-item {
-        padding-left: 1rem !important;
-        /* Move content below dot or remove padding approach */
+        padding-left: 45px !important;
+        /* Space for the timeline line and dot */
     }
 
     .exp-line {
-        display: none;
-        /* Hide line on very small screens for cleaner look, or move it */
+        left: 20px;
+        /* Keep line visible on left side */
     }
 
     .exp-timeline-dot {
-        display: none;
-        /* Hide dots on small mobile to save space */
+        left: 20px;
+        width: 14px;
+        height: 14px;
+        border-width: 3px;
+        top: 35px;
+        transform: translate(-50%, 0);
+        /* Keep dots visible */
+    }
+
+    .exp-timeline-item:hover .exp-timeline-dot {
+        transform: translate(-50%, 0) scale(1.2);
     }
 
     .exp-timeline-content {
+        margin-left: 0 !important;
         width: 100%;
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 
     .company-title {
