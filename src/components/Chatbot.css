@@ -402,4 +402,9 @@
     bottom: 100px;
     height: 65vh;
   }
+
+  /* Hide tooltip on mobile - touch devices don't have hover */
+  .chatbot-tooltip {
+    display: none !important;
+  }
 }
