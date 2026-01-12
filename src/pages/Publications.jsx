@@ -66,9 +66,10 @@ function Publications() {
   return (
     <section className="publications-section" id="publications">
       <div className="container">
-        <div className="section-title-wrapper">
-          <FaFilePdf className="section-icon-large" />
-          <h2 className="section-title-text">Research Work</h2>
+        <div className="section-header center">
+          <h2 className="section-title">
+            <FaFilePdf className="title-icon" /> Research Work
+          </h2>
         </div>
 
         <div className="publications-list">

@@ -157,7 +157,7 @@ function Contact() {
               <FaPaperPlane className="title-icon" /> Get In Touch
             </h2>
             <p className="section-subtitle">
-              Have a project in mind or just want to say hi? I'd love to hear from you.
+              Let's connect! Drop me a message and I'll get back to you soon.
             </p>
           </div>
         </div>
