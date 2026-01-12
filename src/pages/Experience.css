@@ -1,0 +1,352 @@
+/* Experience.css - Premium Timeline */
+.experience-section {
+    padding: 4rem 1.5rem;
+    /* Reduced from 8rem 2rem */
+    /* background: var(--bg-dark); */
+    min-height: 100vh;
+    position: relative;
+}
+
+.exp-timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 3rem auto;
+    /* Reduced from 4rem */
+    padding: 1rem 0;
+    /* Reduced from 2rem */
+}
+
+/* Central Line */
+.exp-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--color-primary), var(--color-secondary), transparent);
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Timeline Item */
+.exp-timeline-item {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 4rem;
+    /* Reduced from 6rem */
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.exp-timeline-item.active {
+    opacity: 1;
+}
+
+.exp-timeline-item.left {
+    padding-right: 50%;
+    transform: translateX(-50px);
+}
+
+.exp-timeline-item.right {
+    padding-left: 50%;
+    transform: translateX(50px);
+}
+
+.exp-timeline-item.active.left,
+.exp-timeline-item.active.right {
+    transform: translateX(0);
+}
+
+.exp-timeline-item.left .exp-timeline-content {
+    margin-right: 3rem;
+    margin-left: auto;
+}
+
+.exp-timeline-item.right .exp-timeline-content {
+    margin-left: 3rem;
+    margin-right: auto;
+}
+
+/* Central Dot */
+.exp-timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 3rem;
+    /* Align near top */
+    width: 20px;
+    height: 20px;
+    /* background: var(--bg-dark); */
+    border: 3px solid var(--color-secondary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-shadow: 0 0 8px var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.exp-timeline-item:hover .exp-timeline-dot {
+    transform: translate(-50%, -50%) scale(1.3);
+    background: var(--color-secondary);
+    box-shadow: 0 0 15px var(--color-secondary);
+}
+
+/* Content Panel */
+.exp-timeline-content {
+    width: 90%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.exp-timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Header */
+.exp-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+}
+
+.company-logo-placeholder {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+.header-details {
+    flex: 1;
+}
+
+.role-title {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+
+
+.company-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.sub-header-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    /* Increased gap for better separation */
+    font-size: 0.95rem;
+    flex-wrap: nowrap;
+    /* Force single line */
+}
+
+.role-name {
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.exp-type-badge {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.exp-date {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    /* Changed to Cyan for better visibility */
+    font-weight: 600;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    /* Forces single line for the date text */
+}
+
+/* Legacy support or removals */
+.company-name {
+    display: none;
+}
+
+.exp-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+}
+
+.exp-type {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.exp-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+/* Body */
+.exp-description {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.icon-small {
+    color: var(--color-primary);
+}
+
+/* Achievements */
+.achievements-block h4,
+.tech-block h4 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.achievements-block ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.achievements-block li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.achievements-block li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+}
+
+/* Tech Tags */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tech-pill {
+    background: rgba(139, 92, 246, 0.1);
+    color: #ddd6fe;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+    background: var(--color-secondary);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .exp-line {
+        left: 20px;
+    }
+
+    .exp-timeline-item {
+        flex-direction: column !important;
+        align-items: flex-start;
+        padding-left: 3.5rem !important;
+        padding-right: 0 !important;
+        transform: none !important;
+        margin-bottom: 4rem;
+    }
+
+    .exp-timeline-content {
+        margin: 0 !important;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .exp-timeline-dot {
+        left: 20px;
+        top: 3rem;
+        transform: translate(-50%, -50%);
+    }
+
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .exp-meta {
+        align-items: flex-start;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .exp-timeline-item {
+        padding-left: 1rem !important;
+        /* Move content below dot or remove padding approach */
+    }
+
+    .exp-line {
+        display: none;
+        /* Hide line on very small screens for cleaner look, or move it */
+    }
+
+    .exp-timeline-dot {
+        display: none;
+        /* Hide dots on small mobile to save space */
+    }
+
+    .exp-timeline-content {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .company-title {
+        font-size: 1.3rem;
+    }
+
+    .role-name {
+        font-size: 1rem;
+    }
+
+    .sub-header-row {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+}

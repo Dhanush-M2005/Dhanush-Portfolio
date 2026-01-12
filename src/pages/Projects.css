@@ -1,0 +1,281 @@
+/* Projects.css - Premium Split View */
+.projects-section {
+  padding: 4rem 1.5rem;
+  /* Reduced from 8rem 2rem */
+  /* background: var(--bg-dark); */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background elements if needed */
+.projects-section::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header styles handled by main.css */
+
+/* Project Row Wrapper */
+.projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  /* Reduced from 8rem */
+}
+
+/* Individual Row */
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-row.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-row.row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Visual Side (Image) */
+.project-visual {
+  flex: 1.2;
+  /* Takes up slightly more space */
+  position: relative;
+}
+
+.project-image-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-surface);
+  aspect-ratio: 16 / 9;
+  /* Enforce standard aspect ratio */
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  /* Fill the container */
+  object-fit: cover;
+  /* Maintain aspect ratio without distortion */
+  display: block;
+  transition: transform 0.7s ease;
+  filter: brightness(0.9);
+}
+
+.project-image-container:hover .project-img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* Overlay & Buttons */
+/* Overlay & Buttons - Permanent Premium Look */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.4);
+  /* Subtle permanent tint */
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease;
+}
+
+.project-image-container:hover .project-overlay {
+  background: rgba(2, 6, 23, 0.6);
+  /* Darker on hover */
+  backdrop-filter: blur(4px);
+}
+
+.overlay-links {
+  display: flex;
+  gap: 1.5rem;
+  /* Always visible, no transform/opacity transition needed */
+}
+
+/* Premium Button Styling */
+.icon-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-btn::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: var(--gradient-main);
+  z-index: -1;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.icon-btn:hover {
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.icon-btn:hover::before {
+  opacity: 0.8;
+}
+
+.icon-btn svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Content Side */
+.project-content {
+  flex: 1;
+}
+
+.project-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.project-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.project-features h4 {
+  color: var(--text-main);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.project-features ul {
+  list-style: none;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two columns for features */
+  gap: 0.5rem;
+}
+
+.project-features li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.project-features li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+}
+
+/* Tech Stack */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tech-badge {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: var(--text-highlight);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: var(--color-secondary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .project-row {
+    flex-direction: column !important;
+    gap: 3rem;
+    text-align: left;
+  }
+
+  .projects-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .project-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-section {
+    padding: 3rem 1rem;
+  }
+
+  .project-visual {
+    width: 100%;
+  }
+
+  .project-title {
+    font-size: 1.8rem;
+  }
+
+  .project-desc {
+    font-size: 1rem;
+  }
+
+  .project-features ul {
+    grid-template-columns: 1fr;
+    /* Single column for features on mobile */
+  }
+
+  .icon-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+}
