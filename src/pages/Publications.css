@@ -2,115 +2,163 @@
 .publications-section {
   padding: 4rem 1.5rem;
   /* Reduced from 8rem 2rem */
-  /* background: var(--bg-dark); */
   min-height: 100vh;
+  position: relative;
 }
 
 /* Header styles are now using global .section-header and .section-title from main.css */
 
-.publications-list {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  /* Reduced from 3rem */
+/* Timeline Container */
+.pub-timeline-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 1rem 0;
 }
 
-.pub-glass-panel {
+/* Central Line */
+.pub-timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--color-primary), var(--color-secondary), transparent);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+/* Timeline Item */
+.pub-timeline-item {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.pub-timeline-item.active {
+  opacity: 1;
+}
+
+.pub-timeline-item.left {
+  padding-right: 50%;
+  transform: translateX(-50px);
+}
+
+.pub-timeline-item.right {
+  padding-left: 50%;
+  transform: translateX(50px);
+}
+
+.pub-timeline-item.active.left,
+.pub-timeline-item.active.right {
+  transform: translateX(0);
+}
+
+.pub-timeline-item.left .pub-timeline-content {
+  margin-right: 3rem;
+  margin-left: auto;
+}
+
+.pub-timeline-item.right .pub-timeline-content {
+  margin-left: 3rem;
+  margin-right: auto;
+}
+
+/* Central Dot */
+.pub-timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 3rem;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 0 8px var(--color-primary);
+  transition: all 0.3s ease;
+  background: var(--bg-dark);
+  /* Ensure dot has background to hide line behind it if needed */
+}
+
+.pub-timeline-item:hover .pub-timeline-dot {
+  transform: translate(-50%, -50%) scale(1.3);
+  background: var(--color-primary);
+  box-shadow: 0 0 15px var(--color-primary);
+}
+
+/* Content Panel */
+.pub-timeline-content {
+  width: 90%;
+  max-width: 500px;
+  padding: 2.5rem;
+  border-radius: 20px;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 2.5rem;
-  position: relative;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   backdrop-filter: blur(12px);
-  overflow: hidden;
 }
 
-.pub-glass-panel.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.pub-glass-panel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 40%);
-  opacity: 0;
-  transition: opacity 0.5s;
-  pointer-events: none;
-}
-
-.pub-glass-panel:hover::before {
-  opacity: 1;
-}
-
-.pub-glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+.pub-timeline-content:hover {
+  transform: translateY(-5px);
+  border-color: rgba(249, 115, 22, 0.3);
 }
 
 /* Watermark Icon */
-.pub-glass-panel::after {
+.pub-timeline-content::after {
   content: '\f1c1';
-  /* FontAwesome PDF icon unicode, roughly */
   font-family: 'Font Awesome 5 Free';
   position: absolute;
   bottom: -20px;
   right: -20px;
-  font-size: 15rem;
+  font-size: 10rem;
   color: rgba(255, 255, 255, 0.01);
   transform: rotate(-15deg);
   pointer-events: none;
   z-index: 0;
 }
 
-.pub-content {
-  position: relative;
-  z-index: 1;
-}
-
+/* Content Styles */
 .pub-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .pub-title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #fff;
   flex: 1;
-  line-height: 1.4;
-  background: linear-gradient(to right, #fff, #cbd5e1);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
 }
 
 .pub-status-badge {
-  padding: 0.4rem 1rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 50px;
   border: 1px solid;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
@@ -133,22 +181,23 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 1;
 }
 
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.95rem;
+  gap: 0.5rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
 }
 
 .meta-icon {
   color: var(--color-primary);
-  font-size: 1rem;
 }
 
 .highlight {
@@ -158,9 +207,11 @@
 
 .pub-description {
   color: var(--text-muted);
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Button */
@@ -168,7 +219,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 0.9rem 2rem;
+  padding: 0.8rem 1.8rem;
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
   border-radius: 12px;
@@ -176,7 +227,9 @@
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
 }
 
 .view-paper-btn:hover {
@@ -194,20 +247,64 @@
   transform: translateX(3px) translateY(-3px);
 }
 
-/* Responsive */
+/* Responsive (Mobile/Tablet) */
 @media (max-width: 768px) {
+  .pub-timeline-line {
+    left: 20px;
+    transform: none;
+    /* Reset center transform */
+  }
+
+  /* Reset Flex layout for mobile */
+  .pub-timeline-item {
+    flex-direction: column !important;
+    align-items: flex-start;
+    padding-left: 3.5rem !important;
+    padding-right: 0 !important;
+    transform: none !important;
+    margin-bottom: 3rem;
+  }
+
+  /* Reset left/right specific logic */
+  .pub-timeline-item.left,
+  .pub-timeline-item.right {
+    transform: none;
+    padding-right: 0;
+    padding-left: 3.5rem;
+    /* Ensure space for line */
+  }
+
+  .pub-timeline-item.active.left,
+  .pub-timeline-item.active.right {
+    transform: none;
+  }
+
+  /* Content reset */
+  .pub-timeline-content {
+    margin: 0 !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pub-timeline-item.left .pub-timeline-content,
+  .pub-timeline-item.right .pub-timeline-content {
+    margin: 0;
+  }
+
+  /* Dot Mobile Position */
+  .pub-timeline-dot {
+    left: 20px;
+    top: 3rem;
+    transform: translate(-50%, -50%);
+  }
+
   .pub-header {
     flex-direction: column;
+    gap: 0.8rem;
   }
 
   .pub-status-badge {
     align-self: flex-start;
-  }
-
-  .pub-meta-row {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 
@@ -216,13 +313,17 @@
     padding: 3rem 1rem;
   }
 
-  .pub-glass-panel {
-    padding: 1.5rem;
-    border-radius: 16px;
+  .pub-timeline-item {
+    padding-left: 45px !important;
   }
 
-  .pub-title {
-    font-size: 1.3rem;
+  .pub-timeline-content {
+    padding: 1.5rem;
+  }
+
+  .pub-timeline-dot {
+    width: 14px;
+    height: 14px;
   }
 
   .view-paper-btn {

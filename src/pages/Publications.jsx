@@ -8,8 +8,14 @@ const PublicationItem = ({ pub, index }) => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <div ref={ref} className={`pub-glass-panel ${isVisible ? 'active' : ''}`} style={{ transitionDelay: `${index * 0.1}s` }}>
-      <div className="pub-content">
+    <div
+      ref={ref}
+      className={`pub-timeline-item ${index % 2 === 0 ? 'left' : 'right'} ${isVisible ? 'active' : ''}`}
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      <div className="pub-timeline-dot"></div>
+
+      <div className="pub-timeline-content glass-panel">
         <div className="pub-header">
           <h3 className="pub-title">{pub.title}</h3>
           <div className="pub-status-badge" style={{ backgroundColor: `${pub.statusColor}20`, color: pub.statusColor, borderColor: pub.statusColor }}>
@@ -70,9 +76,13 @@ function Publications() {
           <h2 className="section-title">
             <FaFilePdf className="title-icon" /> Research Work
           </h2>
+          <p className="section-subtitle">
+            My research contributions and published patents.
+          </p>
         </div>
 
-        <div className="publications-list">
+        <div className="pub-timeline-container">
+          <div className="pub-timeline-line"></div>
           {publications.map((pub, index) => (
             <PublicationItem key={index} pub={pub} index={index} />
           ))}
