@@ -1,5 +1,6 @@
 // Experience.jsx
 import React from 'react';
+import { motion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { FaBriefcase, FaTrophy, FaCode, FaBuilding } from 'react-icons/fa';
 import './Experience.css';
@@ -15,7 +16,7 @@ const ExperienceItem = ({ data, index }) => {
         >
             <div className="exp-timeline-dot"></div>
 
-            <div className="exp-timeline-content glass-panel">
+            <div className="exp-timeline-content glass-panel hover-card">
                 <div className="exp-header">
                     <div className="company-logo-placeholder">
                         <FaBuilding />
@@ -25,7 +26,14 @@ const ExperienceItem = ({ data, index }) => {
                         <div className="role-name">{data.role}</div>
                         <div className="sub-header-row">
                             <span className="exp-type-badge">{data.type}</span>
-                            <span className="exp-date">{data.date}</span>
+                            <motion.span
+                                className="exp-date"
+                                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                                animate={isVisible ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                            >
+                                {data.date}
+                            </motion.span>
                         </div>
                     </div>
                 </div>
@@ -103,12 +111,18 @@ function Experience() {
         return endDateB - endDateA;
     });
 
+    const [titleRef, titleVisible] = useScrollReveal();
+
     return (
         <section className="experience-section" id="experience">
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">
-                        <FaBriefcase className="title-icon" /> Professional Experience
+                        <span className="reveal-text-container" ref={titleRef}>
+                            <span className={`reveal-text ${titleVisible ? 'active' : ''}`}>
+                                <FaBriefcase className="title-icon" /> Professional Experience
+                            </span>
+                        </span>
                     </h2>
                     <p className="section-subtitle">
                         My career journey and professional contributions.
@@ -125,5 +139,6 @@ function Experience() {
         </section>
     );
 }
+
 
 export default Experience;

@@ -51,7 +51,37 @@
   max-width: 800px;
   padding: 6rem 1.5rem 0;
   /* Increased top padding to push logo down */
-  animation: fadeIn 1s ease-out;
+}
+
+/* Base State for Children - Staggered Reveal */
+.hero-content>* {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Active State Triggered by Parent */
+.hero-content.active>* {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays */
+.hero-content.active .profile-wrapper {
+  transition-delay: 0.1s;
+}
+
+.hero-content.active .hero-text {
+  transition-delay: 0.3s;
+}
+
+.hero-content.active .hero-actions {
+  transition-delay: 0.5s;
+}
+
+.hero-content.active .social-links {
+  transition-delay: 0.7s;
 }
 
 /* Profile Image */
@@ -305,6 +335,48 @@
     padding-top: 5rem;
   }
 
+  /* Mobile Staggered Entry - Hyper Modern Elastic Physics */
+  .hero-content>* {
+    opacity: 0;
+    /* Ensure hidden initially */
+    transform: translateY(60px);
+    /* Animation applied when active class is added or parent is active */
+  }
+
+  /* We need to trigger animation when parent is active */
+  .hero-content.active>* {
+    animation: elasticUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  /* Stagger Delays for Mobile */
+  .hero-content.active .profile-wrapper {
+    animation-delay: 0.1s;
+  }
+
+  .hero-content.active .greeting {
+    animation-delay: 0.2s;
+  }
+
+  .hero-content.active .name-title {
+    animation-delay: 0.3s;
+  }
+
+  .hero-content.active .role-wrapper {
+    animation-delay: 0.4s;
+  }
+
+  .hero-content.active .hero-bio {
+    animation-delay: 0.5s;
+  }
+
+  .hero-content.active .hero-actions {
+    animation-delay: 0.6s;
+  }
+
+  .hero-content.active .social-links {
+    animation-delay: 0.7s;
+  }
+
   .name-title {
     font-size: 2.5rem;
     letter-spacing: -1px;
@@ -331,11 +403,30 @@
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 1rem;
   }
 
   .btn {
     width: 100%;
     justify-content: center;
+    /* Tactile Feedback for Mobile Touch */
+    transform: scale(1);
+    transition: transform 0.1s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn:active {
+    transform: scale(0.96) !important;
+    /* Immediate feedback */
+  }
+
+  .social-pill {
+    /* Tactile Feedback */
+    transition: transform 0.1s ease, background 0.3s ease;
+  }
+
+  .social-pill:active {
+    transform: scale(0.9) !important;
+    background: rgba(255, 255, 255, 0.1);
   }
 
   .name-title {

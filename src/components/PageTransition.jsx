@@ -3,11 +3,6 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 const PageTransition = ({ children, custom }) => {
-    // Ensure the user starts at the top of the page on navigation
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     // Directional Logic (Left-to-Right vs Right-to-Left)
     // Forward (Dir > 0): Content flows Left -> Right
     // Backward (Dir < 0): Content flows Right -> Left
@@ -25,7 +20,7 @@ const PageTransition = ({ children, custom }) => {
             filter: 'blur(0px)',
             scale: 1,
             transition: {
-                duration: 1.5,
+                duration: 0.8, // Reduced duration for snappier feel
                 ease: [0.22, 1, 0.36, 1]
             }
         },
@@ -33,9 +28,9 @@ const PageTransition = ({ children, custom }) => {
             // Simple fade/scale exit - no direction dependency
             opacity: 0,
             filter: 'blur(10px)',
-            scale: 0.85,
+            scale: 0.95,
             transition: {
-                duration: 1.5,
+                duration: 0.5,
                 ease: [0.22, 1, 0.36, 1]
             }
         }
@@ -50,10 +45,7 @@ const PageTransition = ({ children, custom }) => {
             exit="exit"
             style={{
                 width: '100%',
-                height: '100%',
-                position: 'absolute',
-                top: 0,
-                left: 0
+                // Removed absolute positioning to allow natural document flow
             }}
         >
             {children}

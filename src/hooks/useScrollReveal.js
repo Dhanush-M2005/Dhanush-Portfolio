@@ -8,17 +8,18 @@ import { useEffect, useState, useRef } from 'react';
 const useScrollReveal = (options = { threshold: 0.1, rootMargin: '0px' }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
+    // Track intersection status ref to use inside event listener without dependencies
+    const isIntersectingRef = useRef(false);
+
+    const { threshold, rootMargin } = options;
 
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
-            // Trigger only once when it comes into view
-            if (entry.isIntersecting) {
-                setIsVisible(true);
-                if (ref.current) {
-                    observer.unobserve(ref.current);
-                }
-            }
-        }, options);
+            // Update ref
+            isIntersectingRef.current = entry.isIntersecting;
+            // Update state
+            setIsVisible(entry.isIntersecting);
+        }, { threshold, rootMargin });
 
         const currentRef = ref.current;
         if (currentRef) {
@@ -30,7 +31,27 @@ const useScrollReveal = (options = { threshold: 0.1, rootMargin: '0px' }) => {
                 observer.unobserve(currentRef);
             }
         };
-    }, [options]);
+    }, [threshold, rootMargin]);
+
+    // Handle tab switching / minimizing
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                // User left the tab -> reset to false so it can animate in again
+                setIsVisible(false);
+            } else {
+                // User came back -> if it was intersecting, set to true to trigger animation
+                if (isIntersectingRef.current) {
+                    setIsVisible(true);
+                }
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, []);
 
     return [ref, isVisible];
 };

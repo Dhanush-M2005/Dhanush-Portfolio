@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaChevronRight } from 'react-icons/fa
 import './Home.css';
 import HeroLogo from '../components/HeroLogo';
 import logo from '../assets/logo.png';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const Typewriter = ({ text, delay = 100 }) => {
   const [currentText, setCurrentText] = useState('');
@@ -71,13 +72,18 @@ const RoleCycler = () => {
 
 
 const Home = () => {
+  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
+
   return (
     <div className="home-container">
       {/* Background Ambience */}
       <div className="ambient-glow glow-1"></div>
       <div className="ambient-glow glow-2"></div>
 
-      <div className="hero-content">
+      <div
+        ref={ref}
+        className={`hero-content ${isVisible ? 'active' : ''}`}
+      >
         <HeroLogo />
 
         <div className="hero-text">
@@ -92,22 +98,22 @@ const Home = () => {
         </div>
 
         <div className="hero-actions">
-          <Link to="/projects" className="btn btn-primary">
+          <Link to="/projects" className="btn btn-primary hover-card">
             View My Work <FaChevronRight />
           </Link>
-          <Link to="/contact" className="btn btn-glass">
+          <Link to="/contact" className="btn btn-glass hover-card">
             Contact Me
           </Link>
         </div>
 
         <div className="social-links">
-          <a href="https://github.com/Dhanush-M2005" target="_blank" rel="noopener noreferrer" className="social-pill" aria-label="Github">
+          <a href="https://github.com/Dhanush-M2005" target="_blank" rel="noopener noreferrer" className="social-pill hover-card" aria-label="Github">
             <FaGithub />
           </a>
-          <a href="https://www.linkedin.com/in/dhanushm2005/" target="_blank" rel="noopener noreferrer" className="social-pill" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/dhanushm2005/" target="_blank" rel="noopener noreferrer" className="social-pill hover-card" aria-label="LinkedIn">
             <FaLinkedin />
           </a>
-          <a href="mailto:dhanushofficial2005@gmail.com" className="social-pill" aria-label="Email">
+          <a href="mailto:dhanushofficial2005@gmail.com" className="social-pill hover-card" aria-label="Email">
             <FaEnvelope />
           </a>
         </div>

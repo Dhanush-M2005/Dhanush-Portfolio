@@ -37,15 +37,51 @@
   position: relative;
   width: 100%;
   margin-bottom: 3rem;
-  /* Reduced from 4rem */
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  perspective: 1000px;
+  /* 3D Context */
 }
 
-.timeline-item.active {
+/* 3D Transforms handled on Content to preserve layout structure */
+.timeline-item.left .timeline-content {
+  transform: translateX(-100px) rotateY(15deg) scale(0.9);
+}
+
+.timeline-item.right .timeline-content {
+  transform: translateX(100px) rotateY(-15deg) scale(0.9);
+}
+
+/* Initial hidden state for content */
+.timeline-content {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  filter: blur(4px);
+  transition: all 1s cubic-bezier(0.17, 0.55, 0.55, 1);
+}
+
+.timeline-item.active .timeline-content {
+  opacity: 1;
+  transform: translateX(0) rotateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Staggered Content Internals */
+.content-header,
+.content-body {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-item.active .content-header {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.timeline-item.active .content-body {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
 }
 
 /* Left Item: Ends at center */
@@ -298,11 +334,28 @@
   gap: 1.5rem;
   padding: 1.8rem;
   border-radius: 20px;
-  transition: all 0.4s ease;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
+
+  /* Animation Props */
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+}
+
+.cert-item.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.cert-item:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  /* Override active transform on hover but keep scale/translate mix */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .cert-item::before {
@@ -454,13 +507,27 @@
     /* Remove 50% padding */
   }
 
-  /* Reset margins for content */
+  /* Reset margins for content & 3D Transforms - Premium Entry */
   .timeline-item.left .timeline-content,
   .timeline-item.right .timeline-content {
     margin: 0 0 0 50px !important;
-    /* Fixed left margin relative to line */
     width: calc(100% - 50px);
     padding: 1.5rem;
+    transform: translateY(60px) scale(0.9);
+    /* Deep slide up */
+    opacity: 0;
+    filter: blur(5px);
+  }
+
+  .timeline-item.active .timeline-content {
+    animation: elasticUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  /* Tactile Feedback for Cards */
+  .timeline-content:active {
+    transform: scale(0.98) !important;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .header-text h3 {
@@ -482,6 +549,8 @@
 @media (max-width: 480px) {
   .education-section {
     padding: 2rem 1rem;
+    padding-top: 5rem;
+    /* Account for fixed navbar */
   }
 
   .gpa-grid {

@@ -23,7 +23,7 @@ const ProjectItem = ({ project, index }) => {
     >
       {/* Visual Side */}
       <div className="project-visual">
-        <div className="project-image-container">
+        <div className="project-image-container hover-card">
           <img src={project.image} alt={project.title} className="project-img" />
           <div className="project-overlay">
             <div className="overlay-links">
@@ -140,7 +140,7 @@ function Projects() {
       ],
       tech: ['React', 'CSS Variables', 'Vite', 'Framer Motion Concepts'],
       github: 'https://github.com/Dhanush-M2005/Dhanush-Portfolio',
-      demo: 'https://dhanush-m-portfolio.web.app',
+      demo: 'https://dhanush-m.web.app',
     },
     {
       title: 'Intelligent Chair System',
@@ -170,12 +170,18 @@ function Projects() {
 
   ];
 
+  const [titleRef, titleVisible] = useScrollReveal();
+
   return (
     <section className="projects-section" id="projects">
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">
-            <FaLaptopCode className="title-icon" /> Featured Work
+            <span className="reveal-text-container" ref={titleRef}>
+              <span className={`reveal-text ${titleVisible ? 'active' : ''}`}>
+                <FaLaptopCode className="title-icon" /> Featured Work
+              </span>
+            </span>
           </h2>
           <p className="section-subtitle">
             A selection of projects that showcase my passion for engineering and design.

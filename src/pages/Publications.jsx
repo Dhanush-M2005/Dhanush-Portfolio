@@ -1,5 +1,6 @@
 // Publications.jsx
 import React from 'react';
+import { motion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { FaFilePdf, FaExternalLinkAlt, FaBuilding, FaCalendarAlt } from 'react-icons/fa';
 import './Publications.css';
@@ -15,7 +16,7 @@ const PublicationItem = ({ pub, index }) => {
     >
       <div className="pub-timeline-dot"></div>
 
-      <div className="pub-timeline-content glass-panel">
+      <div className="pub-timeline-content glass-panel hover-card">
         <div className="pub-header">
           <h3 className="pub-title">{pub.title}</h3>
           <div className="pub-status-badge" style={{ backgroundColor: `${pub.statusColor}20`, color: pub.statusColor, borderColor: pub.statusColor }}>
@@ -31,7 +32,14 @@ const PublicationItem = ({ pub, index }) => {
           </div>
           <div className="meta-item">
             <FaCalendarAlt className="meta-icon" />
-            <span className="date">{pub.date}</span>
+            <motion.span
+              className="date"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              animate={isVisible ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {pub.date}
+            </motion.span>
           </div>
         </div>
 
@@ -48,6 +56,8 @@ const PublicationItem = ({ pub, index }) => {
 }
 
 function Publications() {
+  const [titleRef, titleVisible] = useScrollReveal();
+
   const publications = [
     {
       title: 'Advanced Traffic Management System for Emergency Vehicle Prioritization using GPS and Google Maps API',
@@ -74,7 +84,11 @@ function Publications() {
       <div className="container">
         <div className="section-header center">
           <h2 className="section-title">
-            <FaFilePdf className="title-icon" /> Research Work
+            <span className="reveal-text-container" ref={titleRef}>
+              <span className={`reveal-text ${titleVisible ? 'active' : ''}`}>
+                <FaFilePdf className="title-icon" /> Research Work
+              </span>
+            </span>
           </h2>
           <p className="section-subtitle">
             My research contributions and published patents.

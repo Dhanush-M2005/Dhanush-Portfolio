@@ -15,7 +15,7 @@ const HeroLogo = () => {
             <div className="logo-bg-circle"></div>
 
             {/* Central Image Logo */}
-            <div className="logo-img-wrapper">
+            <div className="logo-img-wrapper hover-card">
                 <img src={logo} alt="Dhanush Logo" className="logo-img" />
             </div>
         </div>

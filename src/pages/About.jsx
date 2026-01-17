@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import HackathonModal from '../components/HackathonModal';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useAnimatedCounter from '../hooks/useAnimatedCounter';
 import './About.css';
 import avatar from '../assets/dhanush.jpg';
 import {
@@ -34,8 +35,11 @@ import {
 } from 'react-icons/si';
 
 const StatItem = ({ icon, label, value, delay, clickable, path, onClick }) => {
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.5 });
+  const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
   const navigate = useNavigate();
+
+  // Use the new hook for animating the number
+  const animatedValue = useAnimatedCounter(value, isVisible, 1.5, delay);
 
   const handleClick = () => {
     if (clickable) {
@@ -58,7 +62,7 @@ const StatItem = ({ icon, label, value, delay, clickable, path, onClick }) => {
       <div className="stat-content">
         <div className="stat-icon">{icon}</div>
         <div className="stat-info">
-          <span className="stat-value gradient-text">{value}</span>
+          <motion.span className="stat-value gradient-text">{animatedValue}</motion.span>
           <span className="stat-label">{label}</span>
         </div>
       </div>
@@ -83,6 +87,7 @@ function About() {
   const [storyRef, storyVisible] = useScrollReveal();
   const [visionRef, visionVisible] = useScrollReveal();
   const [skillsRef, skillsVisible] = useScrollReveal();
+  const [titleRef, titleVisible] = useScrollReveal();
   const [showHackathonModal, setShowHackathonModal] = useState(false);
 
   const hackathonData = [
@@ -101,7 +106,11 @@ function About() {
         {/* Header */}
         <div className="about-header">
           <h2 className="section-title">
-            <FaUserTie className="title-icon" /> About Me
+            <span className="reveal-text-container" ref={titleRef}>
+              <span className={`reveal-text ${titleVisible ? 'active' : ''}`}>
+                <FaUserTie className="title-icon" /> About Me
+              </span>
+            </span>
           </h2>
 
         </div>
@@ -114,7 +123,7 @@ function About() {
           </div>
 
           <div className={`about-intro ${bioVisible ? 'active' : ''}`}>
-            <h3>Hello, I'm <span className="highlight">Dhanush</span></h3>
+            <h3>Hello, I'm <span className="highlight">Dhanush M</span></h3>
             <p className="intro-text">
               I’m a B.Tech student in Computer Science and Business Systems who enjoys learning new technologies and coding regularly. I like understanding how systems work and building solutions that are practical and easy to use. Through hands-on projects and consistent practice, I focus on learning consistently and preparing myself for real-world product development.
             </p>
@@ -134,9 +143,9 @@ function About() {
             clickable
             onClick={() => setShowHackathonModal(true)}
           />
-          <StatItem icon={<FaCode />} value="1500+" label="Problems Solved" delay={0.1} />
-          <StatItem icon={<FaRocket />} value="8+" label="Live Projects" delay={0.2} clickable path="/projects" />
-          <StatItem icon={<FaBolt />} value="8.29" label="Current CGPA" delay={0.3} clickable path="/education" />
+          <StatItem icon={<FaCode />} value="1500+" label="Problems Solved" delay={0} />
+          <StatItem icon={<FaRocket />} value="8+" label="Live Projects" delay={0} clickable path="/projects" />
+          <StatItem icon={<FaBolt />} value="8.29" label="Current CGPA" delay={0} clickable path="/education" />
         </div>
 
         <AnimatePresence>
@@ -150,14 +159,14 @@ function About() {
 
         {/* Story & Vision */}
         <div className="content-grid">
-          <div className={`text-block left ${storyVisible ? 'active' : ''}`} ref={storyRef}>
+          <div className={`text-block left hover-card ${storyVisible ? 'active' : ''}`} ref={storyRef}>
             <h3><FaLightbulb className="block-icon" /> My Mission</h3>
             <p>
               Focused on learning new technologies by actually using them, not just reading about them. Coding is treated as a daily practice, whether it is building features, fixing problems, or experimenting with ideas. Projects are used as a way to understand systems deeply and turn concepts into something real and usable.
             </p>
           </div>
 
-          <div className={`text-block right ${visionVisible ? 'active' : ''}`} ref={visionRef}>
+          <div className={`text-block right hover-card ${visionVisible ? 'active' : ''}`} ref={visionRef}>
             <h3><FaBrain className="block-icon" /> My Vision</h3>
             <p>
               Driven by steady growth and long-term clarity. The path is shaped around strong fundamentals, clean problem-solving, and consistent effort, with the aim of working in a product-based environment where quality, scale, and user experience matter. Learning, building, and improving remain constant, while projects act as proof of progress and skill.

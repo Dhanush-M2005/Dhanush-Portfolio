@@ -6,6 +6,9 @@ import Chatbot from './components/Chatbot';
 import BackgroundAnimation from './components/BackgroundAnimation';
 import AnimatedRoutes from './components/AnimatedRoutes';
 
+
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -30,6 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="App">
         <BackgroundAnimation />
         <Navigation activeSection={activeSection} />

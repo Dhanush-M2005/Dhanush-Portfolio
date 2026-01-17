@@ -42,18 +42,101 @@
   display: flex;
   align-items: center;
   gap: 4rem;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.project-row.active {
-  opacity: 1;
-  transform: translateY(0);
+  /* Perspective for 3D Swing Effect */
+  perspective: 1000px;
 }
 
 .project-row.row-reverse {
   flex-direction: row-reverse;
+}
+
+/* 
+  Initial States for 3D Converging Animation 
+*/
+.project-visual,
+.project-content {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  filter: blur(4px);
+  transition: all 1.2s cubic-bezier(0.17, 0.55, 0.55, 1);
+  /* Smoother, longer duration */
+}
+
+/* 
+  State 1: Normal Row (Visual Left, Content Right)
+  - Visual: From Left (-X), Rotated Y (+Deg) to face center
+  - Content: From Right (+X), Rotated Y (-Deg) to face center
+*/
+.project-row:not(.row-reverse) .project-visual {
+  transform: translateX(-100px) rotateY(15deg) scale(0.9);
+}
+
+.project-row:not(.row-reverse) .project-content {
+  transform: translateX(100px) rotateY(-15deg) scale(0.9);
+}
+
+/* 
+  State 2: Reverse Row (Content Left, Visual Right)
+*/
+.project-row.row-reverse .project-content {
+  transform: translateX(-100px) rotateY(15deg) scale(0.9);
+}
+
+.project-row.row-reverse .project-visual {
+  transform: translateX(100px) rotateY(-15deg) scale(0.9);
+}
+
+/* Active State - Reset 3D */
+.project-row.active .project-visual,
+.project-row.active .project-content {
+  opacity: 1;
+  transform: translateX(0) rotateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* 
+  Staggered Internal Animations (Waterfall Effect)
+  Initially hidden slightly down
+*/
+.project-title,
+.project-desc,
+.project-features,
+.project-tech,
+.icon-btn {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Trigger internal animations when row is active */
+.project-row.active .project-title,
+.project-row.active .project-desc,
+.project-row.active .project-features,
+.project-row.active .project-tech,
+.project-row.active .icon-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays for Waterfall Effect */
+.project-row.active .project-title {
+  transition-delay: 0.1s;
+}
+
+.project-row.active .project-desc {
+  transition-delay: 0.2s;
+}
+
+.project-row.active .project-features {
+  transition-delay: 0.3s;
+}
+
+.project-row.active .project-tech {
+  transition-delay: 0.4s;
+}
+
+.project-row.active .icon-btn {
+  transition-delay: 0.5s;
 }
 
 /* Visual Side (Image) */
@@ -352,6 +435,43 @@
     background: var(--color-primary);
     box-shadow: 0 0 15px var(--color-primary), 0 0 20px var(--color-secondary);
     border-color: #fff;
+  }
+
+  /* 
+    Reset Converging Animation for Mobile 
+    Force a simple vertical slide up - Premium Feel 
+  */
+  .project-row:not(.row-reverse) .project-visual,
+  .project-row:not(.row-reverse) .project-content,
+  .project-row.row-reverse .project-content,
+  .project-row.row-reverse .project-visual {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  /* Ensure explicit transition property overrides desktop if needed */
+  .project-visual,
+  .project-content {
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .project-row.active .project-visual,
+  .project-row.active .project-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  /* Tactile Feedback for Project Card */
+  .project-row {
+    transition: transform 0.2s ease, background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .project-row:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.08);
+    /* Highlight */
+    border-color: rgba(255, 255, 255, 0.2);
   }
 }
 

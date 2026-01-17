@@ -1,11 +1,55 @@
 // Education.jsx
 import React from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useAnimatedCounter from '../hooks/useAnimatedCounter';
 import { FaGraduationCap, FaAward, FaSchool, FaUniversity } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import './Education.css';
 
+const AnimatedScore = ({ value, isVisible, delay = 0 }) => {
+  const animatedValue = useAnimatedCounter(value, isVisible, 1, delay);
+  return (
+    <motion.span
+      initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+      animate={isVisible ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : { opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+      transition={{ type: "spring", stiffness: 200, damping: 15, delay: delay }}
+    >
+      {animatedValue}
+    </motion.span>
+  );
+};
+
+const AnimatedGpa = ({ value, isVisible, delay = 0 }) => {
+  const animatedValue = useAnimatedCounter(value, isVisible, 1, delay);
+  return (
+    <motion.span
+      className="sem-score"
+      initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+      animate={isVisible ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : { opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+      transition={{ type: "spring", stiffness: 200, damping: 15, delay: delay }}
+    >
+      {animatedValue}
+    </motion.span>
+  );
+};
+
+const AnimatedYearRange = ({ year, isVisible, delay = 0 }) => {
+  return (
+    <span style={{ overflow: 'hidden', display: 'inline-block', verticalAlign: 'bottom' }} className="year-badge">
+      <motion.span
+        style={{ display: 'inline-block' }}
+        initial={{ y: "100%" }}
+        animate={isVisible ? { y: "0%" } : { y: "100%" }}
+        transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: delay }}
+      >
+        {year}
+      </motion.span>
+    </span>
+  );
+};
+
 const TimelineItem = ({ data, index }) => {
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
+  const [ref, isVisible] = useScrollReveal({ threshold: 0 });
 
   return (
     <div
@@ -14,7 +58,7 @@ const TimelineItem = ({ data, index }) => {
         }`}
     >
       <div className="timeline-dot"></div>
-      <div className="timeline-content glass-panel">
+      <div className="timeline-content glass-panel hover-card">
         <div className="content-header">
           <div className="institution-icon">
             {data.type === 'college' ? <FaUniversity /> : <FaSchool />}
@@ -27,8 +71,10 @@ const TimelineItem = ({ data, index }) => {
 
         <div className="content-body">
           <div className="meta-info">
-            <span className="year-badge">{data.year}</span>
-            <span className="score-badge">{data.score}</span>
+            <AnimatedYearRange year={data.year} isVisible={isVisible} delay={0} />
+            <span className="score-badge">
+              <AnimatedScore value={data.score} isVisible={isVisible} delay={0} />
+            </span>
           </div>
 
           {data.details && (
@@ -38,7 +84,7 @@ const TimelineItem = ({ data, index }) => {
                 {data.details.map((sem, i) => (
                   <div key={i} className="gpa-pill">
                     <span className="sem-label">{sem.sem}</span>
-                    <span className="sem-score">{sem.gpa}</span>
+                    <AnimatedGpa value={sem.gpa} isVisible={isVisible} delay={i * 0.1} />
                   </div>
                 ))}
               </div>
@@ -49,6 +95,25 @@ const TimelineItem = ({ data, index }) => {
     </div>
   );
 };
+
+const CertItem = ({ cert, index }) => {
+  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
+
+  return (
+    <div
+      ref={ref}
+      className={`cert-item glass-panel hover-card ${cert.color} ${isVisible ? 'active' : ''}`}
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      <span className="cert-emoji">{cert.icon}</span>
+      <div>
+        <h4>{cert.title}</h4>
+        <p>{cert.issuer}</p>
+      </div>
+    </div>
+  );
+};
+
 
 function Education() {
   const educationData = [
@@ -75,6 +140,8 @@ function Education() {
     },
   ];
 
+  const [titleRef, titleVisible] = useScrollReveal();
+
   const certifications = [
     {
       title: 'Typewriting English Junior',
@@ -96,7 +163,11 @@ function Education() {
 
         <div className="section-header">
           <h2 className="section-title">
-            <FaGraduationCap className="title-icon" /> Academic Journey
+            <span className="reveal-text-container" ref={titleRef}>
+              <span className={`reveal-text ${titleVisible ? 'active' : ''}`}>
+                <FaGraduationCap className="title-icon" /> Academic Journey
+              </span>
+            </span>
           </h2>
           <p className="section-subtitle">
             My educational background and academic achievements.
@@ -114,13 +185,7 @@ function Education() {
           <h3 className="sub-heading"><FaAward /> Certifications</h3>
           <div className="cert-grid">
             {certifications.map((cert, index) => (
-              <div key={index} className={`cert-item glass-panel ${cert.color}`}>
-                <span className="cert-emoji">{cert.icon}</span>
-                <div>
-                  <h4>{cert.title}</h4>
-                  <p>{cert.issuer}</p>
-                </div>
-              </div>
+              <CertItem key={index} cert={cert} index={index} />
             ))}
           </div>
         </div>
