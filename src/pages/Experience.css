@@ -369,8 +369,6 @@
 @media (max-width: 480px) {
     .experience-section {
         padding: 2rem 1rem;
-        padding-top: 5rem;
-        /* Account for fixed navbar */
     }
 
     .exp-timeline-item {

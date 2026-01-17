@@ -127,14 +127,16 @@ const Achievements = () => {
     <section className="achievements-section" id="achievements">
       <div className="container">
         <div className="section-header center" ref={headerRef}>
-          <div className={`fade-in-up ${headerVisible ? 'active' : ''}`}>
-            <h2 className="section-title">
-              <FaTrophy className="title-icon" /> Achievements
-            </h2>
-            <p className="section-subtitle">
-              Recognitions, certifications, and milestones in my tech journey.
-            </p>
-          </div>
+          <h2 className="section-title">
+            <span className="reveal-text-container">
+              <span className={`reveal-text ${headerVisible ? 'active' : ''}`}>
+                <FaTrophy className="title-icon" /> Achievements
+              </span>
+            </span>
+          </h2>
+          <p className="section-subtitle">
+            Recognitions, certifications, and milestones in my tech journey.
+          </p>
         </div>
 
         <div className="stats-grid">

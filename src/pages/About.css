@@ -14,6 +14,19 @@
   /* Reduced from 5rem */
 }
 
+/* Mobile: Add padding for fixed navbar */
+@media (max-width: 768px) {
+  .about-header {
+    padding-top: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-header {
+    padding-top: 3rem;
+  }
+}
+
 /* Hero Bio */
 .about-hero {
   display: flex;

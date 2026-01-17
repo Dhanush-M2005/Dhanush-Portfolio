@@ -549,8 +549,6 @@
 @media (max-width: 480px) {
   .education-section {
     padding: 2rem 1rem;
-    padding-top: 5rem;
-    /* Account for fixed navbar */
   }
 
   .gpa-grid {

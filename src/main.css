@@ -300,13 +300,43 @@ body {
 
 /* Responsive Headers */
 @media (max-width: 768px) {
+    .section-header {
+        margin-bottom: 2rem;
+        padding-top: 2.5rem;
+        /* Account for fixed navbar */
+    }
+
     .section-title {
-        font-size: 2.4rem;
+        font-size: 2rem;
         flex-direction: row;
-        gap: 0.5rem;
+        flex-wrap: nowrap;
+        gap: 0.4rem;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
     }
 
     .title-icon {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
+        flex-shrink: 0;
+    }
+
+    .reveal-text {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.4rem;
+        white-space: nowrap;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        padding-top: 3rem;
+        /* Slightly more padding for smaller devices */
     }
 }
