@@ -405,17 +405,15 @@
   .project-row::before {
     content: '';
     position: absolute;
-    /* -40px relative to card (which is at 60px). 60 - 40 = 20px (line position) */
     left: -40px;
     top: 35px;
-    /* Align with top area */
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     background: #0a0a1a;
-    border: 2px solid var(--color-primary);
+    border: 3px solid var(--color-primary);
     border-radius: 50%;
     z-index: 2;
-    box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
     transition: all 0.3s ease;
     transform: translate(-50%, 0);
   }
