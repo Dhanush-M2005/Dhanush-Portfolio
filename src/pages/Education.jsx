@@ -122,12 +122,13 @@ function Education() {
       institution: 'Sri Sairam Engineering College',
       degree: 'B.Tech - Computer Science & Business Systems',
       year: '2023 - 2027',
-      score: 'CGPA: 8.29',
+      score: 'CGPA: 8.45',
       details: [
         { sem: 'Sem 1', gpa: '8.106' },
         { sem: 'Sem 2', gpa: '8.093' },
         { sem: 'Sem 3', gpa: '8.510' },
         { sem: 'Sem 4', gpa: '8.426' },
+        { sem: 'Sem 5', gpa: '9.083' },
       ],
     },
     {

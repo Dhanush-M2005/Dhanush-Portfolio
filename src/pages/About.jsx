@@ -145,7 +145,7 @@ function About() {
           />
           <StatItem icon={<FaCode />} value="1500+" label="Problems Solved" delay={0} />
           <StatItem icon={<FaRocket />} value="8+" label="Live Projects" delay={0} clickable path="/projects" />
-          <StatItem icon={<FaBolt />} value="8.29" label="Current CGPA" delay={0} clickable path="/education" />
+          <StatItem icon={<FaBolt />} value="8.45" label="Current CGPA" delay={0} clickable path="/education" />
         </div>
 
         <AnimatePresence>
