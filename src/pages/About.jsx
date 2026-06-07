@@ -141,7 +141,7 @@ function About() {
             label="Hackathons"
             delay={0}
             clickable
-            onClick={() => setShowHackathonModal(true)}
+            path="/achievement"
           />
           <StatItem icon={<FaCode />} value="1500+" label="Problems Solved" delay={0} />
           <StatItem icon={<FaRocket />} value="8+" label="Live Projects" delay={0} clickable path="/projects" />

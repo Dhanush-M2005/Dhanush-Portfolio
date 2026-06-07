@@ -340,3 +340,13 @@ body {
         /* Slightly more padding for smaller devices */
     }
 }
+
+/* Global Container Layout Centering */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 1.5rem;
+}

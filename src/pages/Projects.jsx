@@ -11,6 +11,7 @@ import raceImg from '../assets/race.png';
 import farmAppImg from '../assets/Farm App.png';
 
 import pythonAppImg from '../assets/python_App.png';
+import zaferPayImg from '../assets/zaferpay_combined.png';
 
 const ProjectItem = ({ project, index }) => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
@@ -81,6 +82,32 @@ const ProjectItem = ({ project, index }) => {
 
 function Projects() {
   const projects = [
+    {
+      title: 'ZaferPay',
+      image: zaferPayImg,
+      description:
+        'An AI-powered UPI payment security system that detects and prevents fraudulent transactions in real time before they are completed. It uses machine learning, user behavior analysis, and security rules to identify suspicious activities, ensuring safe, secure, and seamless digital payments for users.',
+      features: [
+        'AI-Powered Fraud Detection',
+        'Real-Time Transaction Monitoring',
+        'Behavioral Pattern Analysis',
+        'Machine Learning Risk Assessment',
+        'Rule-Based Security Validation',
+        'Social Trust Network Scoring',
+      ],
+      tech: [
+        'Flutter',
+        'Gemini AI',
+        'Dart',
+        'Python',
+        'Isolation Forest',
+        'XGBoost',
+        'FastAPI',
+        'PostgreSQL',
+      ],
+      github: 'https://github.com/Dhanush-M2005/ZaferPay',
+      demo: '',
+    },
     {
       title: 'Smart Farming App',
       image: farmAppImg,

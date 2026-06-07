@@ -17,7 +17,7 @@ function Navigation() {
     { path: '/experience', label: 'Experience' },
     { path: '/projects', label: 'Projects' },
     { path: '/publications', label: 'Publications' },
-
+    { path: '/achievement', label: 'Achievements' },
     { path: '/contact', label: 'Contact' },
   ];
 

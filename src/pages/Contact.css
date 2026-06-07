@@ -546,3 +546,82 @@
   letter-spacing: 0.2em;
   filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5));
 }
+
+/* Scroll Up Indicator */
+.scroll-up-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin: 4rem auto 1rem auto;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: fit-content;
+}
+
+.scroll-up-indicator:hover {
+  transform: translateY(-5px);
+}
+
+.scroll-up-text {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.scroll-up-indicator:hover .scroll-up-text {
+  color: var(--color-secondary);
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+.scroll-up-indicator:hover .mouse-up {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+.mouse-up {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wheel-up {
+  width: 4px;
+  height: 8px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheelUp 2s infinite;
+}
+
+@keyframes scrollWheelUp {
+  0% {
+    transform: translate(-50%, 12px);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(-50%, 12px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+}
+
+/* Hide scroll indicator on laptops, desktops, and large screens */
+@media (min-width: 1025px) {
+  .scroll-up-indicator {
+    display: none !important;
+  }
+}

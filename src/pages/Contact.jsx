@@ -1,5 +1,6 @@
 // Contact.jsx
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useScrollReveal from '../hooks/useScrollReveal';
 import {
   FaMapMarkerAlt,
@@ -176,6 +177,7 @@ const SuccessModal = ({ isOpen, onClose }) => {
 };
 
 function Contact() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -378,6 +380,13 @@ function Contact() {
               </button>
             </form>
           </div>
+        </div>
+
+        <div className="scroll-up-indicator" onClick={() => navigate('/achievement', { state: { fromBackward: true } })}>
+          <div className="mouse-up">
+            <div className="wheel-up"></div>
+          </div>
+          <span className="scroll-up-text">Scroll Up</span>
         </div>
 
       </div>

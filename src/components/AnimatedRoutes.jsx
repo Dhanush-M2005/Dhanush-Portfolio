@@ -6,7 +6,7 @@ import About from '../pages/About';
 import Education from '../pages/Education';
 import Projects from '../pages/Projects';
 import Publications from '../pages/Publications';
-
+import Achievement from '../pages/Achievement';
 import Experience from '../pages/Experience';
 import Contact from '../pages/Contact';
 import PageTransition from './PageTransition';
@@ -19,7 +19,7 @@ const routeOrder = [
     '/experience',
     '/projects',
     '/publications',
-
+    '/achievement',
     '/contact'
 ];
 
@@ -28,17 +28,6 @@ const AnimatedRoutes = () => {
     const prevPath = useRef(location.pathname);
 
     // Calculate flow direction
-    const routeOrder = [
-        '/',
-        '/about',
-        '/education',
-        '/experience',
-        '/projects',
-        '/publications',
-
-        '/contact'
-    ];
-
     const currentIdx = routeOrder.indexOf(location.pathname);
     const prevIdx = routeOrder.indexOf(prevPath.current);
 
@@ -53,14 +42,14 @@ const AnimatedRoutes = () => {
 
     return (
         <div style={{ position: 'relative', width: '100%', minHeight: '100vh', overflowX: 'hidden' }}>
-            <AnimatePresence mode="popLayout" custom={direction}>
+            <AnimatePresence mode="wait" custom={direction}>
                 <Routes location={location} key={location.pathname}>
                     <Route path="/" element={<PageTransition custom={direction}><Home /></PageTransition>} />
                     <Route path="/about" element={<PageTransition custom={direction}><About /></PageTransition>} />
                     <Route path="/education" element={<PageTransition custom={direction}><Education /></PageTransition>} />
                     <Route path="/projects" element={<PageTransition custom={direction}><Projects /></PageTransition>} />
                     <Route path="/publications" element={<PageTransition custom={direction}><Publications /></PageTransition>} />
-
+                    <Route path="/achievement" element={<PageTransition custom={direction}><Achievement /></PageTransition>} />
                     <Route path="/experience" element={<PageTransition custom={direction}><Experience /></PageTransition>} />
                     <Route path="/contact" element={<PageTransition custom={direction}><Contact /></PageTransition>} />
                 </Routes>
@@ -70,3 +59,4 @@ const AnimatedRoutes = () => {
 };
 
 export default AnimatedRoutes;
+

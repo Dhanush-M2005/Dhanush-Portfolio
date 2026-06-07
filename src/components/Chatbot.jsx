@@ -28,34 +28,56 @@ const Chatbot = () => {
         {
             category: "About Me",
             items: [
-                { id: 'bio', question: "Who is Dhanush?", answer: "Dhanush M is a Full Stack Developer and B.Tech student in Computer Science & Business Systems. He builds practical digital solutions and is passionate about understanding systems deeply. He describes himself as a Problem Solver, UI/UX Enthusiast, and App Developer." },
-                { id: 'mission', question: "What is your Mission?", answer: "To learn by doing—treating coding as a daily practice. He aims to understand systems deeply, build practical solutions, and work in product-based environments where quality matches scale." },
-                { id: 'education', question: "Educational Background?", answer: "He is pursuing B.Tech in Computer Science and Business Systems (CSBS) at Sri Sairam Engineering College, Chennai. \n🎓 Current CGPA: 8.29" },
-                { id: 'skills', question: "Technical Skills?", answer: "Key Skills:\n• Languages: Java, Python, C, JavaScript, Dart\n• Frameworks: React, Flutter, Node.js, Express.js, Flask\n• DB & Cloud: MongoDB, Firebase\n• Tools: Git, Postman, Figma, Tailwind CSS" }
+                { id: 'bio', question: "Who is Dhanush?", answer: "Dhanush M is a B.Tech student in Computer Science & Business Systems at Sri Sairam Engineering College, Chennai. He is a Full Stack Developer, App Developer, UI/UX Enthusiast, and Problem Solver who loves building practical digital solutions through consistent learning and clean code." },
+                { id: 'mission_vision', question: "Mission & Vision?", answer: "🎯 Mission: To learn by doing—treating coding as a daily practice. He aims to understand systems deeply, build practical solutions, and turn concepts into reality.\n\n👁️ Vision: Driven by steady growth and long-term clarity. He aims to work in product-based environments where quality, scale, and user experience matter." },
+                { id: 'skills', question: "Technical Skills?", answer: "Key Skills:\n• Languages: Java, Python, C, JavaScript, Dart\n• Frameworks: React, Flutter, Node.js, Express.js, Flask\n• DB & Cloud: MongoDB, Firebase\n• Tools & Tech: Git, GitHub, Postman, Figma, Tailwind CSS, Bootstrap CSS\n• UI/UX Design: Custom Design Systems, Prototyping, and Wireframing" }
             ]
         },
         {
-            category: "Projects",
+            category: "Education & Credentials",
             items: [
-                { id: 'proj_farming', question: "Project: Smart Farming App", answer: "A Flutter-based mobile app empowering farmers. \n✨ Tech: Flutter, Firebase, Gemini AI\n🚀 Features: AI Disease Diagnosis, Voice Assistant (Gemini), Live Market Prices, Soil Health analysis." },
-                { id: 'proj_python', question: "Project: Python X App", answer: "A gamified Python learning platform for mobile. \n✨ Tech: Flutter, Dart, Pyodide (Offline Compiler)\n🚀 Features: Built-in Compiler, Visual Lessons, XP Reward System, Certificates." },
-                { id: 'proj_race', question: "Project: Race Insight", answer: "A high-performance desktop telemetry dashboard. \n✨ Tech: Rust, TypeScript, Electron, React\n🚀 Features: Real-time driver tracking, Visual telemetry, Cross-platform architecture." },
-                { id: 'proj_chair', question: "Project: Intelligent Chair System", answer: "An AI-powered IoT system for posture monitoring. \n✨ Tech: IoT (ESP32), Flask, React, MongoDB\n🚀 Features: Real-time posture analysis, Health alerts, Web Dashboard." },
-                { id: 'proj_portfolio', question: "Project: This Portfolio", answer: "A premium personal website built with React and Vite. It features a custom design system, glassmorphism UI, framer-motion animations, and no external component libraries." }
+                { id: 'edu_overview', question: "Education Overview", answer: "🎓 B.Tech in Computer Science and Business Systems (2023 - 2027) at Sri Sairam Engineering College, Chennai.\n📈 Current CGPA: 8.45\n🏫 Higher Secondary (XII) at John Dewey Matriculation Hr. Sec. School (2022 - 2023) with 80.50%." },
+                { id: 'edu_gpa', question: "Semester GPA Breakdown", answer: "📚 Semester-wise GPA Breakdown:\n• Sem 1: 8.106 GPA\n• Sem 2: 8.093 GPA\n• Sem 3: 8.510 GPA\n• Sem 4: 8.426 GPA\n• Sem 5: 9.083 GPA\n📈 Current CGPA: 8.45" },
+                { id: 'certs', question: "Certifications", answer: "🏆 Certifications:\n• Typewriting English Junior (Department of Technical Education) ⌨️\n• Hindi Prathmic (Dakshin Bharat Hindi Prachar Sabha) 📜" }
             ]
         },
         {
             category: "Experience",
             items: [
-                { id: 'exp_vzync', question: "Internship: Vzync Studios", answer: "At **Vzync Studios** (Jan–Feb 2026), Dhanush worked as a **Flutter Developer Intern**. He developed a cross-platform mobile app from scratch, integrated Firebase/REST APIs, and prepared the app for the Google Play Store." },
-                { id: 'exp_incubator', question: "Internship: Techno Incubator", answer: "At **Sri Sairam Techno Incubator** (Dec 2025–Jan 2026), he worked as a **Software Developer Intern** in R&D. He built 'Race Insight', a desktop app for driver monitoring using Rust, TypeScript, Electron, and React." }
+                { id: 'exp_overview', question: "Work Experience Summary", answer: "💼 Dhanush has completed two key software development internships:\n1. Vzync Studios Private Limited — Flutter Developer Intern\n2. Sri Sairam Techno Incubator Foundation — Software Developer Intern in R&D" },
+                { id: 'exp_vzync', question: "Internship: Vzync Studios", answer: "📱 Flutter Developer Intern (Jan - Feb 2026):\n• Developed a cross-platform mobile application from scratch.\n• Integrated Firebase for backend services and REST APIs for data handling.\n• Contributed to key projects like the Python Learning App and prepared applications for deployment to the Google Play Store." },
+                { id: 'exp_sairam', question: "Internship: Techno Incubator", answer: "💻 Software Developer Intern in R&D (Dec 2025 - Jan 2026):\n• Built \"Race Insight\", a high-performance cross-platform desktop application for real-time driver tracking and visual race telemetry.\n• Tech Stack: Rust, TypeScript, Electron, React." }
             ]
         },
         {
-            category: "Connect",
+            category: "Projects",
             items: [
-                { id: 'hackathons', question: "Achievements & Hackathons", answer: "🏆 Winner: Ideathon 4.0 (2024)\n🏆 Winner: Solvathon 4.0 (2025)\n🚀 Semifinalist: Mastek Deep Blue Season 10\n🧩 Stats: 1500+ problems solved across platforms." },
-                { id: 'contact', question: "How can I contact you?", answer: "You can find him here:\n📧 Email: dhanushofficial2005@gmail.com\n🔗 LinkedIn: linkedin.com/in/dhanushm2005\n🐙 GitHub: github.com/Dhanush-M2005\n📍 Location: Chennai, India" }
+                { id: 'proj_zaferpay', question: "Project: ZaferPay", answer: "🔒 ZaferPay: An AI-powered real-time UPI payment security system.\n✨ Tech: Flutter, Gemini AI, Dart, Python, Isolation Forest, XGBoost, FastAPI, PostgreSQL.\n🚀 Features: Detects and prevents fraudulent UPI transactions in real-time before completion using machine learning and social trust networks." },
+                { id: 'proj_farming', question: "Project: Smart Farming App", answer: "🌾 Smart Farming App: An intelligent mobile app to empower farmers.\n✨ Tech: Flutter, Firebase, Gemini AI, Dart.\n🚀 Features: AI-powered disease diagnosis, smart voice assistant powered by Gemini AI, live market prices, and soil health analysis.\n🔗 Live: https://farmer-app-1685.web.app/" },
+                { id: 'proj_python', question: "Project: Python X App", answer: "🐍 Python X App: A gamified mobile platform to learn Python.\n✨ Tech: Flutter, Dart, Pyodide (Offline Compiler), Riverpod, Lottie.\n🚀 Features: Built-in offline compiler, gamified XP/reward system, visual lessons, and certificates.\n🔗 Live: https://pythonx-1685.web.app/" },
+                { id: 'proj_race', question: "Project: Race Insight", answer: "🏎️ Race Insight: A desktop telemetry application for race drivers.\n✨ Tech: Rust, TypeScript, Electron, React.\n🚀 Features: Real-time driver tracking, visual race telemetry, and live data dashboard.\n🔗 Web: https://apexracetech.in/race-insight" },
+                { id: 'proj_others', question: "Other Projects?", answer: "🛠️ Other Projects:\n• Intelligent Chair System: An AI posture monitoring IoT system (ESP32, Flask, React, MongoDB) for real-time sitting position analysis and alerts.\n• Premium Portfolio: This website, featuring a custom glassmorphism design, fluid animations, and high performance." }
+            ]
+        },
+        {
+            category: "Research & Patents",
+            items: [
+                { id: 'pub_patent', question: "Patent: Traffic Management", answer: "🚨 Traffic Management Patent (Published Aug 2024):\n• Title: Advanced Traffic Management System for Emergency Vehicle Prioritization using GPS and Google Maps API.\n• Publisher: Intellectual Property India.\n• Summary: GPS-integrated traffic management system for emergency vehicles using real-time signal control and route optimization." },
+                { id: 'pub_paper', question: "Paper: UPI Fraud Detection", answer: "💳 UPI Fraud Detection Paper (In Process, 2026):\n• Title: A Federated Intelligence Platform for Real-Time UPI Fraud Detection.\n• Summary: A real-time API-as-a-service utilizing federated intelligence and XGBoost to detect/prevent UPI fraud instantly, featuring a novel Social Graph Velocity Check." }
+            ]
+        },
+        {
+            category: "Achievements",
+            items: [
+                { id: 'ach_wins', question: "Major Hackathon Wins", answer: "🏆 Major Hackathon Wins:\n• Winner: Project Deep Blue Hackathon Season 11 (2026) - 1st Place & ₹1,50,000 cash prize.\n• Winner: Sairam SDG Innovathon 4.0 (2026) - 1st Place.\n• Winner: TorqueFest 2K25 Project Expo (2026) - 1st Place.\n• Winner: Sairam SDG Solveathon 4.0 (2025) - 1st Place.\n• Runner-Up: CHEMOVATE 2.0 (2026).\n• Winner: Sairam SDG Ideathon 4.0 (2024) - 2nd Prize." },
+                { id: 'ach_deepblue', question: "Deep Blue Hackathon Details", answer: "🏆 Mastek Project Deep Blue Hackathon:\n• Season 11 (2026): Winner (1st Place), winning a ₹1,50,000 cash prize. Developed and presented an innovative tech solution to a distinguished jury.\n• Season 10 (2025): Reached the Semi-Finals, successfully developing a working solution." }
+            ]
+        },
+        {
+            category: "Contact & Availability",
+            items: [
+                { id: 'contact', question: "How can I contact Dhanush?", answer: "You can find him here:\n📧 Email: dhanushofficial2005@gmail.com\n🔗 LinkedIn: linkedin.com/in/dhanushm2005\n🐙 GitHub: github.com/Dhanush-M2005\n📍 Location: Chennai, Tamil Nadu, India" },
+                { id: 'availability', question: "Collaboration & Hiring?", answer: "🟢 Availability:\n• Full-time Opportunities (Open to roles starting 2027)\n• Freelance Projects\n• Collaborations & Open Source\nFeel free to fill out the form on the Contact page, and he will get back to you soon!" }
             ]
         }
     ];

@@ -1,6 +1,6 @@
 // Home.jsx
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope, FaChevronRight } from 'react-icons/fa';
 import './Home.css';
 import HeroLogo from '../components/HeroLogo';
@@ -73,6 +73,7 @@ const RoleCycler = () => {
 
 const Home = () => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
+  const navigate = useNavigate();
 
   return (
     <div className="home-container">
@@ -116,6 +117,13 @@ const Home = () => {
           <a href="mailto:dhanushofficial2005@gmail.com" className="social-pill hover-card" aria-label="Email">
             <FaEnvelope />
           </a>
+        </div>
+      </div>
+
+      <div className="scroll-indicator" onClick={() => navigate('/about')}>
+        <span className="scroll-text">Scroll Down</span>
+        <div className="mouse">
+          <div className="wheel"></div>
         </div>
       </div>
 
