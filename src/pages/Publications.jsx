@@ -66,7 +66,7 @@ function Publications() {
       status: 'Published',
       statusColor: '#22c55e',
       description: 'This invention introduces a GPS-integrated traffic management system for emergency vehicles using real-time signal control and route optimization with Google Maps API.',
-      link: '/pdfs/iprpdf.pdf',
+      link: '/pdfs/iprpdf.pdf?v=20260810',
     },
     {
       title: 'A Federated Intelligence Platform for Real-Time UPI Fraud Detection',
@@ -75,7 +75,7 @@ function Publications() {
       status: 'Published',
       statusColor: '#22c55e',
       description: 'A real-time API-as-a-service utilizing federated intelligence and XGBoost to detect and prevent UPI fraud instantly. Features a novel Social Graph Velocity Check.',
-      link: '/pdfs/iprpdf2.pdf',
+      link: '/pdfs/iprpdf2.pdf?v=20260810',
     },
   ];
 
