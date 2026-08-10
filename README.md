@@ -4,7 +4,6 @@
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
 ![Live Demo](https://img.shields.io/badge/Live_Demo-https%3A%2F%2Fdhanush--m.web.app-brightgreen?style=for-the-badge&logo=firebase)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
 🌐 **Live Website:** [https://dhanush-m.web.app/](https://dhanush-m.web.app/)
 
@@ -28,12 +27,11 @@ Check out the live interactive website:
 - [Configuration](#️-configuration)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
-- [License](#-license)
 - [Contact](#-contact)
 
 ## 🚀 Features
 
--   ** immersive UI/UX**: Custom cursor, glassmorphism effects, and smooth reveal animations.
+-   **immersive UI/UX**: Custom cursor, glassmorphism effects, and smooth reveal animations.
 -   **📱 Fully Responsive**: Flawless experience across all devices (Mobile, Tablet, Desktop).
 -   **⚡ High Performance**: Powered by Vite for lightning-fast HMR and optimized builds.
 -   **🎨 Dynamic Theming**: Sophisticated dark theme with vibrant accent colors.
@@ -151,10 +149,6 @@ Contributions are welcome! If you'd like to improve this portfolio template:
 3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
 4.  Push to the branch (`git push origin feature/AmazingFeature`).
 5.  Open a Pull Request.
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📬 Contact
 
