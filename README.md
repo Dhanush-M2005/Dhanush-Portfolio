@@ -3,14 +3,23 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+![Live Demo](https://img.shields.io/badge/Live_Demo-https%3A%2F%2Fdhanush--m.web.app-brightgreen?style=for-the-badge&logo=firebase)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
-A premium, high-performance personal portfolio website designed to showcase skills, projects, and professional experience. Built with a focus on smooth animations, responsive design, and modern web best practices.
+🌐 **Live Website:** [https://dhanush-m.web.app/](https://dhanush-m.web.app/)
+
+A premium, high-performance single-page portfolio website designed to showcase skills, projects, and professional experience. Built with a focus on smooth animations, responsive design, and modern web best practices.
 
 ![Portfolio Home](public/screenshot1.png)
 
+## 🌐 Live Demo
+
+Check out the live interactive website:  
+👉 **[https://dhanush-m.web.app/](https://dhanush-m.web.app/)**
+
 ## 📑 Table of Contents
 
+- [Live Demo](#-live-demo)
 - [Features](#-features)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
@@ -123,13 +132,15 @@ VITE_FIREBASE_APP_ID=your_app_id
 
 ## 🚀 Deployment
 
-The project is optimized for deployment on Vercel, Netlify, or GitHub Pages.
+The project is deployed on **Firebase Hosting**.
 
-**Build for production:**
+**Build & Deploy for production:**
 ```bash
 npm run build
+firebase deploy --only hosting
 ```
-This command generates a `dist` folder containing the optimized static files.
+
+Live Website: **[https://dhanush-m.web.app/](https://dhanush-m.web.app/)**
 
 ## 🤝 Contributing
 
