@@ -151,7 +151,7 @@ function Achievement() {
     ];
 
     return (
-        <section className="achievement-section" id="achievements">
+        <section className="achievement-section" id="achievement">
             <div className="container">
                 <div className="section-header center">
                     <h2 className="section-title">

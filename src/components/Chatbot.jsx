@@ -28,17 +28,17 @@ const Chatbot = () => {
         {
             category: "About Me",
             items: [
-                { id: 'bio', question: "Who is Dhanush?", answer: "Dhanush M is a B.Tech student in Computer Science & Business Systems at Sri Sairam Engineering College, Chennai. He is a Full Stack Developer, App Developer, UI/UX Enthusiast, and Problem Solver who loves building practical digital solutions through consistent learning and clean code." },
+                { id: 'bio', question: "Who is Dhanush?", answer: "Dhanush M is a B.Tech student in Computer Science & Business Systems at Sri Sairam Engineering College, Chennai. He is a Cloud Engineer, Full Stack Developer, App Developer, UI/UX Enthusiast, and Problem Solver who loves building practical digital solutions through consistent learning and clean code." },
                 { id: 'mission_vision', question: "Mission & Vision?", answer: "🎯 Mission: To learn by doing—treating coding as a daily practice. He aims to understand systems deeply, build practical solutions, and turn concepts into reality.\n\n👁️ Vision: Driven by steady growth and long-term clarity. He aims to work in product-based environments where quality, scale, and user experience matter." },
-                { id: 'skills', question: "Technical Skills?", answer: "Key Skills:\n• Languages: Java, Python, C, JavaScript, Dart\n• Frameworks: React, Flutter, Node.js, Express.js, Flask\n• DB & Cloud: MongoDB, Firebase\n• Tools & Tech: Git, GitHub, Postman, Figma, Tailwind CSS, Bootstrap CSS\n• UI/UX Design: Custom Design Systems, Prototyping, and Wireframing" }
+                { id: 'skills', question: "Technical Skills?", answer: "Key Skills:\n• Languages: Java, Python, C, JavaScript, Dart, SQL\n• Cloud & Infrastructure: AWS\n• Frameworks: React, Flutter, Flask\n• DB & Backend: MongoDB, Firebase, SQL\n• Tools & Tech: Git, GitHub, Postman, Figma, Tailwind CSS, Bootstrap CSS\n• UI/UX Design: Custom Design Systems, Prototyping, and Wireframing" }
             ]
         },
         {
             category: "Education & Credentials",
             items: [
-                { id: 'edu_overview', question: "Education Overview", answer: "🎓 B.Tech in Computer Science and Business Systems (2023 - 2027) at Sri Sairam Engineering College, Chennai.\n📈 Current CGPA: 8.45\n🏫 Higher Secondary (XII) at John Dewey Matriculation Hr. Sec. School (2022 - 2023) with 80.50%." },
-                { id: 'edu_gpa', question: "Semester GPA Breakdown", answer: "📚 Semester-wise GPA Breakdown:\n• Sem 1: 8.106 GPA\n• Sem 2: 8.093 GPA\n• Sem 3: 8.510 GPA\n• Sem 4: 8.426 GPA\n• Sem 5: 9.083 GPA\n📈 Current CGPA: 8.45" },
-                { id: 'certs', question: "Certifications", answer: "🏆 Certifications:\n• Typewriting English Junior (Department of Technical Education) ⌨️\n• Hindi Prathmic (Dakshin Bharat Hindi Prachar Sabha) 📜" }
+                { id: 'edu_overview', question: "Education Overview", answer: "🎓 B.Tech in Computer Science and Business Systems (2023 - 2027) at Sri Sairam Engineering College, Chennai.\n📈 Current CGPA: 8.42\n🏫 Higher Secondary (XII) at John Dewey Matriculation Hr. Sec. School (2022 - 2023) with 80.50%." },
+                { id: 'edu_gpa', question: "Semester GPA Breakdown", answer: "📚 Semester-wise GPA Breakdown:\n• Sem 1: 8.106 GPA\n• Sem 2: 8.093 GPA\n• Sem 3: 8.510 GPA\n• Sem 4: 8.426 GPA\n• Sem 5: 9.083 GPA\n• Sem 6: 8.245 GPA\n📈 Current CGPA: 8.42" },
+                { id: 'certs', question: "Certifications", answer: "🏆 Certifications & Verification:\n• Dhanush's official certifications are available on Google Drive.\n🔗 Drive Folder: https://drive.google.com/drive/folders/1GaFKqWQz_m09Pg_EKnDxhmE9CsP-rbSi?usp=sharing" }
             ]
         },
         {
@@ -56,14 +56,14 @@ const Chatbot = () => {
                 { id: 'proj_farming', question: "Project: Smart Farming App", answer: "🌾 Smart Farming App: An intelligent mobile app to empower farmers.\n✨ Tech: Flutter, Firebase, Gemini AI, Dart.\n🚀 Features: AI-powered disease diagnosis, smart voice assistant powered by Gemini AI, live market prices, and soil health analysis.\n🔗 Live: https://farmer-app-1685.web.app/" },
                 { id: 'proj_python', question: "Project: Python X App", answer: "🐍 Python X App: A gamified mobile platform to learn Python.\n✨ Tech: Flutter, Dart, Pyodide (Offline Compiler), Riverpod, Lottie.\n🚀 Features: Built-in offline compiler, gamified XP/reward system, visual lessons, and certificates.\n🔗 Live: https://pythonx-1685.web.app/" },
                 { id: 'proj_race', question: "Project: Race Insight", answer: "🏎️ Race Insight: A desktop telemetry application for race drivers.\n✨ Tech: Rust, TypeScript, Electron, React.\n🚀 Features: Real-time driver tracking, visual race telemetry, and live data dashboard.\n🔗 Web: https://apexracetech.in/race-insight" },
-                { id: 'proj_others', question: "Other Projects?", answer: "🛠️ Other Projects:\n• Intelligent Chair System: An AI posture monitoring IoT system (ESP32, Flask, React, MongoDB) for real-time sitting position analysis and alerts.\n• Premium Portfolio: This website, featuring a custom glassmorphism design, fluid animations, and high performance." }
+                { id: 'proj_others', question: "Other Projects?", answer: "🛠️ Other Projects:\n• Intelligent Chair System: An AI posture monitoring IoT system (ESP32, Flask, React, MongoDB) for real-time sitting position analysis and alerts.\n• Premium Portfolio: This single-page website, featuring a custom glassmorphism design, fluid smooth scrolling, and high performance." }
             ]
         },
         {
             category: "Research & Patents",
             items: [
-                { id: 'pub_patent', question: "Patent: Traffic Management", answer: "🚨 Traffic Management Patent (Published Aug 2024):\n• Title: Advanced Traffic Management System for Emergency Vehicle Prioritization using GPS and Google Maps API.\n• Publisher: Intellectual Property India.\n• Summary: GPS-integrated traffic management system for emergency vehicles using real-time signal control and route optimization." },
-                { id: 'pub_paper', question: "Paper: UPI Fraud Detection", answer: "💳 UPI Fraud Detection Paper (In Process, 2026):\n• Title: A Federated Intelligence Platform for Real-Time UPI Fraud Detection.\n• Summary: A real-time API-as-a-service utilizing federated intelligence and XGBoost to detect/prevent UPI fraud instantly, featuring a novel Social Graph Velocity Check." }
+                { id: 'pub_patent', question: "Patent: Traffic Management", answer: "🚨 Emergency Traffic Prioritization Patent (Published Aug 30, 2024):\n• Title: Advanced Traffic Management System for Emergency Vehicle Prioritization using GPS and Google Maps API.\n• Publisher: Intellectual Property India.\n• Summary: GPS-integrated traffic management system for emergency vehicles using real-time signal control and route optimization." },
+                { id: 'pub_paper', question: "Patent: UPI Fraud Detection", answer: "💳 UPI Fraud Detection Patent (Published Jan 16, 2026):\n• Title: A Federated Intelligence Platform for Real-Time UPI Fraud Detection.\n• Publisher: Intellectual Property India.\n• Summary: A real-time API-as-a-service utilizing federated intelligence and XGBoost to detect/prevent UPI fraud instantly, featuring a novel Social Graph Velocity Check." }
             ]
         },
         {
@@ -77,7 +77,7 @@ const Chatbot = () => {
             category: "Contact & Availability",
             items: [
                 { id: 'contact', question: "How can I contact Dhanush?", answer: "You can find him here:\n📧 Email: dhanushofficial2005@gmail.com\n🔗 LinkedIn: linkedin.com/in/dhanushm2005\n🐙 GitHub: github.com/Dhanush-M2005\n📍 Location: Chennai, Tamil Nadu, India" },
-                { id: 'availability', question: "Collaboration & Hiring?", answer: "🟢 Availability:\n• Full-time Opportunities (Open to roles starting 2027)\n• Freelance Projects\n• Collaborations & Open Source\nFeel free to fill out the form on the Contact page, and he will get back to you soon!" }
+                { id: 'availability', question: "Collaboration & Hiring?", answer: "🟢 Availability:\n• Full-time Opportunities (Open to roles starting 2027)\n• Freelance Projects\n• Collaborations & Open Source\nFeel free to fill out the form on the Contact section, and he will get back to you soon!" }
             ]
         }
     ];

@@ -1,37 +1,40 @@
 // Navigation.jsx
 import { useState, useEffect, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import logo from '../assets/logo-optimized.png';
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({ activeSection = 'home' }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
 
   const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/education', label: 'Education' },
-    { path: '/experience', label: 'Experience' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/publications', label: 'Publications' },
-    { path: '/achievement', label: 'Achievements' },
-    { path: '/contact', label: 'Contact' },
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'education', label: 'Education' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'publications', label: 'Publications' },
+    { id: 'achievement', label: 'Achievements' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10); // Trigger sooner
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
+  const scrollToSection = (id) => {
     setIsMobileOpen(false);
-  }, [location]);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', `#${id}`);
+    }
+  };
 
   const toggleMenu = () => setIsMobileOpen(!isMobileOpen);
 
@@ -65,39 +68,38 @@ function Navigation() {
     }, 30);
   };
 
-  const handleMouseLeave = () => {
-    // Optional: Snap back immediately or let it finish. 
-    // Let's ensure it resets cleanly if needed, but the loop handles completion.
-    // We can force it back if we want strictly "on hover only" but usually completing the effect is nicer.
-    // Checking strict user intent: "while click that dhanush also"
-  };
-
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         {/* Modern Logo */}
-        <NavLink
-          to="/"
+        <a
+          href="#home"
           className="logo-wrapper"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('home');
+          }}
           onMouseEnter={handleMouseEnter}
         >
           <img src={logo} alt="D" className="nav-logo-img" />
           <span className="logo-text">{displayText}</span>
           <div className="logo-dot"></div>
-        </NavLink>
+        </a>
 
         {/* Desktop Nav */}
         <ul className="nav-links desktop-nav">
           {navItems.map((item) => (
-            <li key={item.path}>
-              <NavLink
-                to={item.path}
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? 'active' : ''}`
-                }
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
+                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
               >
                 {item.label}
-              </NavLink>
+              </a>
             </li>
           ))}
         </ul>
@@ -120,14 +122,17 @@ function Navigation() {
         <div className={`mobile-nav-drawer ${isMobileOpen ? 'open' : ''}`}>
           <div className="mobile-nav-content">
             {navItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) => `mobile-link ${isActive ? 'active' : ''}`}
-                onClick={() => setIsMobileOpen(false)}
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`mobile-link ${activeSection === item.id ? 'active' : ''}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
               >
                 {item.label}
-              </NavLink>
+              </a>
             ))}
           </div>
         </div>

@@ -62,7 +62,7 @@ function Publications() {
     {
       title: 'Advanced Traffic Management System for Emergency Vehicle Prioritization using GPS and Google Maps API',
       publisher: 'Intellectual Property India',
-      date: 'August 23, 2024',
+      date: 'August 30, 2024',
       status: 'Published',
       statusColor: '#22c55e',
       description: 'This invention introduces a GPS-integrated traffic management system for emergency vehicles using real-time signal control and route optimization with Google Maps API.',
@@ -70,12 +70,12 @@ function Publications() {
     },
     {
       title: 'A Federated Intelligence Platform for Real-Time UPI Fraud Detection',
-      publisher: 'To be published',
-      date: '2026',
-      status: 'In Process',
-      statusColor: '#facc15',
+      publisher: 'Intellectual Property India',
+      date: 'January 16, 2026',
+      status: 'Published',
+      statusColor: '#22c55e',
       description: 'A real-time API-as-a-service utilizing federated intelligence and XGBoost to detect and prevent UPI fraud instantly. Features a novel Social Graph Velocity Check.',
-      link: '',
+      link: '/pdfs/iprpdf2.pdf',
     },
   ];
 

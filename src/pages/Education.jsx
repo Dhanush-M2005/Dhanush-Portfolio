@@ -96,25 +96,6 @@ const TimelineItem = ({ data, index }) => {
   );
 };
 
-const CertItem = ({ cert, index }) => {
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
-
-  return (
-    <div
-      ref={ref}
-      className={`cert-item glass-panel hover-card ${cert.color} ${isVisible ? 'active' : ''}`}
-      style={{ transitionDelay: `${index * 0.1}s` }}
-    >
-      <span className="cert-emoji">{cert.icon}</span>
-      <div>
-        <h4>{cert.title}</h4>
-        <p>{cert.issuer}</p>
-      </div>
-    </div>
-  );
-};
-
-
 function Education() {
   const educationData = [
     {
@@ -122,13 +103,14 @@ function Education() {
       institution: 'Sri Sairam Engineering College',
       degree: 'B.Tech - Computer Science & Business Systems',
       year: '2023 - 2027',
-      score: 'CGPA: 8.45',
+      score: 'CGPA: 8.42',
       details: [
         { sem: 'Sem 1', gpa: '8.106' },
         { sem: 'Sem 2', gpa: '8.093' },
         { sem: 'Sem 3', gpa: '8.510' },
         { sem: 'Sem 4', gpa: '8.426' },
         { sem: 'Sem 5', gpa: '9.083' },
+        { sem: 'Sem 6', gpa: '8.245' },
       ],
     },
     {
@@ -142,21 +124,6 @@ function Education() {
   ];
 
   const [titleRef, titleVisible] = useScrollReveal();
-
-  const certifications = [
-    {
-      title: 'Typewriting English Junior',
-      issuer: 'Department of Technical Education',
-      icon: '⌨️',
-      color: 'blue'
-    },
-    {
-      title: 'Hindi Prathmic',
-      issuer: 'Dakshin Bharat Hindi Prachar Sabha',
-      icon: '📜',
-      color: 'orange'
-    }
-  ];
 
   return (
     <section className="education-section" id="education">
@@ -180,15 +147,6 @@ function Education() {
           {educationData.map((item, index) => (
             <TimelineItem key={index} data={item} index={index} />
           ))}
-        </div>
-
-        <div className="certifications-wrapper">
-          <h3 className="sub-heading"><FaAward /> Certifications</h3>
-          <div className="cert-grid">
-            {certifications.map((cert, index) => (
-              <CertItem key={index} cert={cert} index={index} />
-            ))}
-          </div>
         </div>
 
       </div>

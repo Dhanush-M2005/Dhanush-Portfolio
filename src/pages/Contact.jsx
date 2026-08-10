@@ -1,6 +1,5 @@
 // Contact.jsx
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useScrollReveal from '../hooks/useScrollReveal';
 import {
   FaMapMarkerAlt,
@@ -9,7 +8,8 @@ import {
   FaGithub,
   FaEnvelope,
   FaBriefcase,
-  FaCheckCircle
+  FaCheckCircle,
+  FaChevronUp
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
@@ -177,7 +177,6 @@ const SuccessModal = ({ isOpen, onClose }) => {
 };
 
 function Contact() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -382,8 +381,20 @@ function Contact() {
           </div>
         </div>
 
-        <div className="scroll-up-indicator" onClick={() => navigate('/achievement', { state: { fromBackward: true } })}>
-          <div className="mouse-up">
+        <div className="scroll-up-indicator" onClick={() => {
+          const homeEl = document.getElementById('home');
+          if (homeEl) {
+            homeEl.scrollIntoView({ behavior: 'smooth' });
+            window.history.replaceState(null, '', '#home');
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }}>
+          <div className="scroll-chevrons-up">
+            <FaChevronUp className="chevron-up chevron-up-2" />
+            <FaChevronUp className="chevron-up chevron-up-1" />
+          </div>
+          <div className="mouse-badge-up">
             <div className="wheel-up"></div>
           </div>
           <span className="scroll-up-text">Scroll Up</span>

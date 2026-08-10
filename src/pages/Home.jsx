@@ -1,7 +1,6 @@
 // Home.jsx
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaEnvelope, FaChevronRight } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaChevronRight, FaChevronDown } from 'react-icons/fa';
 import './Home.css';
 import HeroLogo from '../components/HeroLogo';
 import logo from '../assets/logo.png';
@@ -26,6 +25,7 @@ const Typewriter = ({ text, delay = 100 }) => {
 
 const RoleCycler = () => {
   const roles = [
+    'Cloud Engineer',
     'Full Stack Developer',
     'UI/UX Enthusiast',
     'Problem Solver',
@@ -73,10 +73,17 @@ const RoleCycler = () => {
 
 const Home = () => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
-  const navigate = useNavigate();
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', `#${id}`);
+    }
+  };
 
   return (
-    <div className="home-container">
+    <section className="home-container home-section" id="home">
       {/* Background Ambience */}
       <div className="ambient-glow glow-1"></div>
       <div className="ambient-glow glow-2"></div>
@@ -99,12 +106,20 @@ const Home = () => {
         </div>
 
         <div className="hero-actions">
-          <Link to="/projects" className="btn btn-primary hover-card">
+          <a
+            href="#projects"
+            onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}
+            className="btn btn-primary hover-card"
+          >
             View My Work <FaChevronRight />
-          </Link>
-          <Link to="/contact" className="btn btn-glass hover-card">
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+            className="btn btn-glass hover-card"
+          >
             Contact Me
-          </Link>
+          </a>
         </div>
 
         <div className="social-links">
@@ -120,14 +135,18 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="scroll-indicator" onClick={() => navigate('/about')}>
+      <div className="scroll-indicator" onClick={() => scrollToSection('about')}>
         <span className="scroll-text">Scroll Down</span>
-        <div className="mouse">
+        <div className="mouse-badge">
           <div className="wheel"></div>
+        </div>
+        <div className="scroll-chevrons">
+          <FaChevronDown className="chevron chevron-1" />
+          <FaChevronDown className="chevron chevron-2" />
         </div>
       </div>
 
-    </div>
+    </section>
   );
 };
 

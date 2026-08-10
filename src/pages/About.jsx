@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import HackathonModal from '../components/HackathonModal';
 import useScrollReveal from '../hooks/useScrollReveal';
@@ -15,10 +14,12 @@ import {
   FaRocket,
   FaBrain,
   FaLaptopCode,
+  FaAward,
   FaJava,
   FaReact,
   FaPython,
-  FaNodeJs,
+  FaAws,
+  FaDatabase,
   FaBootstrap,
   FaGithub
 } from 'react-icons/fa';
@@ -27,25 +28,30 @@ import {
   SiJavascript,
   SiDart,
   SiFlutter,
-  SiExpress,
   SiMongodb,
   SiTailwindcss,
   SiPostman,
   SiGit
 } from 'react-icons/si';
 
-const StatItem = ({ icon, label, value, delay, clickable, path, onClick }) => {
+const StatItem = ({ icon, label, value, delay, clickable, path, externalUrl, onClick }) => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
-  const navigate = useNavigate();
 
-  // Use the new hook for animating the number
+  // Use the hook for animating the number if numbers present, otherwise direct string
   const animatedValue = useAnimatedCounter(value, isVisible, 1.5, delay);
+  const displayValue = typeof value === 'string' && !/\d/.test(value) ? value : animatedValue;
 
   const handleClick = () => {
     if (clickable) {
-      if (path) {
-        navigate(path);
-        window.scrollTo(0, 0);
+      if (externalUrl) {
+        window.open(externalUrl, '_blank', 'noopener,noreferrer');
+      } else if (path) {
+        const sectionId = path.replace('/', '');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState(null, '', `#${sectionId}`);
+        }
       } else if (onClick) {
         onClick();
       }
@@ -62,8 +68,8 @@ const StatItem = ({ icon, label, value, delay, clickable, path, onClick }) => {
       <div className="stat-content">
         <div className="stat-icon">{icon}</div>
         <div className="stat-info">
-          <motion.span className="stat-value gradient-text">{animatedValue}</motion.span>
-          <span className="stat-label">{label}</span>
+          <motion.span className="stat-value gradient-text">{displayValue}</motion.span>
+          {label && <span className="stat-label">{label}</span>}
         </div>
       </div>
       {clickable && (
@@ -145,7 +151,15 @@ function About() {
           />
           <StatItem icon={<FaCode />} value="1500+" label="Problems Solved" delay={0} />
           <StatItem icon={<FaRocket />} value="8+" label="Live Projects" delay={0} clickable path="/projects" />
-          <StatItem icon={<FaBolt />} value="8.45" label="Current CGPA" delay={0} clickable path="/education" />
+          <StatItem
+            icon={<FaAward />}
+            value="Certifications"
+            label="View All"
+            delay={0}
+            clickable
+            externalUrl="https://drive.google.com/drive/folders/1GaFKqWQz_m09Pg_EKnDxhmE9CsP-rbSi?usp=sharing"
+          />
+          <StatItem icon={<FaBolt />} value="8.42" label="Current CGPA" delay={0} clickable path="/education" />
         </div>
 
         <AnimatePresence>
@@ -185,8 +199,8 @@ function About() {
             <SkillPill name="Python" icon={<FaPython />} />
             <SkillPill name="Dart" icon={<SiDart />} />
             <SkillPill name="Flutter" icon={<SiFlutter />} />
-            <SkillPill name="Node JS" icon={<FaNodeJs />} />
-            <SkillPill name="Express JS" icon={<SiExpress />} />
+            <SkillPill name="AWS" icon={<FaAws />} />
+            <SkillPill name="SQL" icon={<FaDatabase />} />
             <SkillPill name="MongoDB" icon={<SiMongodb />} />
             <SkillPill name="Tailwind CSS" icon={<SiTailwindcss />} />
             <SkillPill name="Bootstrap CSS" icon={<FaBootstrap />} />
