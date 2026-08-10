@@ -152,7 +152,7 @@ Contributions are welcome! If you'd like to improve this portfolio template:
 
 ## 📬 Contact
 
-**Dhanush M** - App Developer & Tech Enthusiast
+**Dhanush M**
 
 -   [LinkedIn](https://www.linkedin.com/in/dhanushm2005/)
 -   [GitHub](https://github.com/Dhanush-M2005)
