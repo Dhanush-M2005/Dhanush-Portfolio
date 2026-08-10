@@ -159,4 +159,4 @@ Contributions are welcome! If you'd like to improve this portfolio template:
 -   [Email](mailto:dhanushofficial2005@gmail.com)
 
 ---
-*Built with ❤️ by Dhanush M*
+*Built with 🩵 by Dhanush M*
