@@ -12,6 +12,7 @@ import farmAppImg from '../assets/Farm App.png';
 
 import pythonAppImg from '../assets/python_App.png';
 import zaferPayImg from '../assets/zaferpay_combined.png';
+import cdmsImg from '../assets/cdms.png';
 
 const ProjectItem = ({ project, index }) => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
@@ -82,6 +83,31 @@ const ProjectItem = ({ project, index }) => {
 
 function Projects() {
   const projects = [
+    {
+      title: 'CDMS (Cloud Document Management System)',
+      image: cdmsImg,
+      description:
+        'A secure serverless cloud platform designed to manage sensitive documents with controlled access, secure storage, and activity tracking. CDMS uses AWS Cognito for authentication, role-based access control, private Amazon S3 storage, and direct-to-S3 file uploads using pre-signed URLs. It also provides temporary, permission-based sharing and audit tracking through a centralized web interface.',
+      features: [
+        'Secure Authentication with AWS Cognito',
+        'Direct-to-S3 File Uploads using Pre-Signed URLs',
+        'Temporary & Permission-Based File Sharing',
+        'Role-Based Access Control (RBAC)',
+        'Document Activity & Audit Tracking',
+      ],
+      tech: [
+        'React',
+        'Node.js',
+        'AWS Cognito',
+        'API Gateway',
+        'AWS Lambda',
+        'Amazon S3',
+        'DynamoDB',
+        'Firebase Hosting',
+      ],
+      github: '',
+      demo: 'https://cdms16.web.app/',
+    },
     {
       title: 'ZaferPay',
       image: zaferPayImg,
