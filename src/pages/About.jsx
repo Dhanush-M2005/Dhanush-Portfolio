@@ -4,7 +4,7 @@ import HackathonModal from '../components/HackathonModal';
 import useScrollReveal from '../hooks/useScrollReveal';
 import useAnimatedCounter from '../hooks/useAnimatedCounter';
 import './About.css';
-import avatar from '../assets/dhanush.jpg';
+import avatar from '../assets/dhanush_m.png';
 import {
   FaUserTie,
   FaPalette,
