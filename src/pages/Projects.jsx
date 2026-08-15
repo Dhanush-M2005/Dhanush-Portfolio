@@ -13,6 +13,7 @@ import farmAppImg from '../assets/Farm App.png';
 import pythonAppImg from '../assets/python_App.png';
 import zaferPayImg from '../assets/zaferpay_combined.png';
 import cdmsImg from '../assets/cdms.png';
+import javelinImg from '../assets/javelin.png';
 
 const ProjectItem = ({ project, index }) => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
@@ -164,6 +165,24 @@ function Projects() {
       tech: ['Flutter', 'Dart', 'Pyodide', 'Riverpod', 'Lottie Animations'],
       github: '',
       demo: 'https://pythonx-1685.web.app/',
+    },
+    {
+      title: 'Javelin Tracker',
+      image: javelinImg,
+      description:
+        'A Flutter-based sports analytics application for javelin athletes and coaches that connects to ESP32-based sensors over Wi-Fi to sync throw data, analyze performance metrics, visualize trajectories, compare throws, and store datasets locally for offline access.',
+      features: [
+        'ESP32 Wi-Fi Sensor Integration',
+        'Automatic CSV Data Synchronization',
+        'Throw Detection and Analysis',
+        'Trajectory Visualization',
+        'Throw-to-Throw Performance Comparison',
+        'Distance, Speed, Angle, Flight Time & Peak Height Metrics',
+        'Local Data Storage for Offline Access',
+      ],
+      tech: ['Flutter', 'Dart', 'ESP32', 'Wi-Fi', 'Provider', 'fl_chart', 'CSV', 'vector_math'],
+      github: 'https://github.com/Dhanush-M2005/Javelin_App',
+      demo: '',
     },
     {
       title: 'Race Insight',
