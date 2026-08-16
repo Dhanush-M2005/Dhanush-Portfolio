@@ -191,34 +191,10 @@
   font-weight: 500;
 }
 
-/* Revamped Quote Animation */
-.hero-quote-container {
-  margin-top: 0.5rem;
-  padding: 0.8rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  /* Glass pill */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  margin-bottom: 1.5rem;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  position: relative;
-  transition: all 0.4s ease;
-}
-
-.hero-quote-container:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
-}
+/* Revamped Quote Animation - Inline */
 
 .hero-quote-text {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-style: italic;
   font-weight: 500;
   color: var(--text-main);
@@ -229,13 +205,14 @@
   letter-spacing: 0.5px;
 }
 
-.cyclist-wrapper {
+.cyclist-wrapper-inline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   animation: floatCycle 4s ease-in-out infinite;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  margin-left: 0.2rem;
 }
 
 .cyclist {
