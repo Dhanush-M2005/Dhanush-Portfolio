@@ -87,20 +87,17 @@
 /* Profile Image */
 .profile-wrapper {
   position: relative;
-  width: 160px;
-  /* Reduced from 180px */
-  height: 160px;
-  margin: 0 auto 1.5rem;
-  /* Reduced from 2.5rem */
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .profile-img {
-  width: 140px;
-  /* Reduced from 160px */
-  height: 140px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid rgba(255, 255, 255, 0.1);
@@ -135,23 +132,19 @@
 }
 
 .name-title {
-  font-size: 4rem;
-  /* Reduced from 4.5rem */
+  font-size: 3.5rem;
   font-weight: 800;
-  margin-bottom: 0.5rem;
-  /* Reduced from 1rem */
+  margin-bottom: 0.2rem;
   line-height: 1.1;
   letter-spacing: -2px;
 }
 
 .role-wrapper {
-  font-size: 1.8rem;
-  /* Reduced from 2rem */
+  font-size: 1.5rem;
   color: var(--text-muted);
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  /* Reduced from 2rem */
-  min-height: 3rem;
+  margin-bottom: 0.2rem;
+  min-height: 2.5rem;
 }
 
 /* Typewriter Effect */
@@ -289,9 +282,8 @@
 .hero-actions {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
-  /* Reduced from 1.5rem */
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
   /* Reduced from 3rem */
   flex-wrap: wrap;
 }
@@ -339,15 +331,15 @@
 }
 
 .social-pill {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--text-muted);
   transition: all 0.3s ease;
 }
