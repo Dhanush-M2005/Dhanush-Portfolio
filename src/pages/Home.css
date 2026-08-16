@@ -198,6 +198,78 @@
   font-weight: 500;
 }
 
+/* Quote Animation */
+.hero-quote-container {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 10px 10px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(5px);
+  margin-bottom: 2rem;
+}
+
+.hero-quote-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--text-main);
+  background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyclist-wrapper {
+  display: inline-block;
+  font-size: 1.5rem;
+  animation: slowRide 8s linear infinite;
+}
+
+.cyclist {
+  display: inline-block;
+  animation: pedaling 0.5s infinite linear;
+}
+
+@keyframes pedaling {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-2px) rotate(3deg);
+  }
+
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  75% {
+    transform: translateY(1px) rotate(-2deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes slowRide {
+  0% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(-5px);
+  }
+}
+
 /* Buttons */
 .hero-actions {
   display: flex;
@@ -367,9 +439,12 @@
 }
 
 @keyframes bounceFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
+
   50% {
     transform: translateX(-50%) translateY(8px);
   }
@@ -381,10 +456,12 @@
     opacity: 1;
     height: 9px;
   }
+
   50% {
     opacity: 0.9;
     height: 14px;
   }
+
   100% {
     transform: translate(-50%, 16px);
     opacity: 0;
@@ -393,10 +470,13 @@
 }
 
 @keyframes chevronPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.3;
     transform: translateY(-2px) scale(0.9);
   }
+
   50% {
     opacity: 1;
     transform: translateY(2px) scale(1.1);
@@ -512,4 +592,3 @@
     font-size: 2.2rem;
   }
 }
-
