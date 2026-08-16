@@ -106,13 +106,14 @@ const Home = () => {
 
           <div className="quote-box-simple">
             <span className="hero-quote-text">
-              <span className="quote-mark">"</span>Success is a <span className="quote-green">journey</span>, not a <span className="quote-red">destination</span><span className="quote-mark">"</span>
+              <span className="quote-mark">"</span>Success is a <span className="quote-green">journey</span>, not a <span className="quote-red">destination</span>
             </span>
             <span className="cyclist-wrapper-inline">
               <span className="speed-line speed-1"></span>
               <span className="speed-line speed-2"></span>
               <span className="speed-line speed-3"></span>
               <span className="cyclist">🚴</span>
+              <span className="quote-mark">"</span>
             </span>
           </div>
         </div>
