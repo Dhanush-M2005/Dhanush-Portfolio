@@ -113,8 +113,8 @@ const Home = () => {
               <span className="speed-line speed-2"></span>
               <span className="speed-line speed-3"></span>
               <span className="cyclist">🚴</span>
-              <span className="quote-mark">"</span>
             </span>
+            <span className="quote-mark">"</span>
           </div>
         </div>
 
