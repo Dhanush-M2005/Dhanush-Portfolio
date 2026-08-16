@@ -235,9 +235,9 @@
 }
 
 .quote-mark {
-  color: #c2410c;
-  /* Deep Dark Orange / Rust - extremely prominent */
-  -webkit-text-fill-color: #c2410c;
+  color: #ff9800;
+  /* Bright vivid orange to exactly match the target */
+  -webkit-text-fill-color: #ff9800;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.8rem;
   font-weight: 900;
@@ -245,7 +245,7 @@
   vertical-align: -0.25rem;
   margin: 0 0.15rem;
   display: inline-block;
-  text-shadow: 0 0 15px rgba(194, 65, 12, 0.6);
+  text-shadow: 0 0 15px rgba(255, 152, 0, 0.6);
   animation: pulseQuote 2s infinite alternate;
 }
 
