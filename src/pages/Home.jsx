@@ -102,9 +102,11 @@ const Home = () => {
           </h3>
           <p className="hero-bio">
             Building practical <span className="highlight">digital solutions</span> through consistent learning and clean code. Interested in understanding systems, exploring new technologies, and solving <span className="highlight">real-world problems</span>.
-            <br />
+          </p>
+
+          <div className="quote-box-simple">
             <span className="hero-quote-text">
-              Success is a <span className="quote-green">journey</span>, not a <span className="quote-red">destination</span>
+              "Success is a <span className="quote-green">journey</span>, not a <span className="quote-red">destination</span>"
             </span>
             <span className="cyclist-wrapper-inline">
               <span className="speed-line speed-1"></span>
@@ -112,7 +114,7 @@ const Home = () => {
               <span className="speed-line speed-3"></span>
               <span className="cyclist">🚴</span>
             </span>
-          </p>
+          </div>
         </div>
 
         <div className="hero-actions">
