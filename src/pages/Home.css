@@ -198,40 +198,57 @@
   font-weight: 500;
 }
 
-/* Quote Animation */
+/* Revamped Quote Animation */
 .hero-quote-container {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-left: 3px solid var(--color-primary);
-  border-radius: 0 10px 10px 0;
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  /* Glass pill */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  backdrop-filter: blur(5px);
-  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 2.5rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.hero-quote-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .hero-quote-text {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-style: italic;
   font-weight: 500;
   color: var(--text-main);
-  background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+  background: linear-gradient(90deg, #f8fafc, #94a3b8);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
 }
 
 .cyclist-wrapper {
-  display: inline-block;
-  font-size: 1.5rem;
-  animation: slowRide 8s linear infinite;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  animation: floatCycle 4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
 
 .cyclist {
   display: inline-block;
-  animation: pedaling 0.5s infinite linear;
+  animation: pedaling 0.6s linear infinite;
+  transform-origin: center bottom;
 }
 
 @keyframes pedaling {
@@ -240,7 +257,7 @@
   }
 
   25% {
-    transform: translateY(-2px) rotate(3deg);
+    transform: translateY(-2px) rotate(-4deg);
   }
 
   50% {
@@ -248,7 +265,7 @@
   }
 
   75% {
-    transform: translateY(1px) rotate(-2deg);
+    transform: translateY(2px) rotate(2deg);
   }
 
   100% {
@@ -256,17 +273,15 @@
   }
 }
 
-@keyframes slowRide {
-  0% {
-    transform: translateX(-5px);
+@keyframes floatCycle {
+
+  0%,
+  100% {
+    transform: translateX(0);
   }
 
   50% {
-    transform: translateX(10px);
-  }
-
-  100% {
-    transform: translateX(-5px);
+    transform: translateX(-15px);
   }
 }
 

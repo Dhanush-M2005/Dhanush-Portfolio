@@ -104,8 +104,8 @@ const Home = () => {
             Building practical <span className="highlight">digital solutions</span> through consistent learning and clean code. Interested in understanding systems, exploring new technologies, and solving <span className="highlight">real-world problems</span>.
           </p>
 
-          <div className="hero-quote-container hover-card">
-            <span className="hero-quote-text">"Success is a journey, not a destination"</span>
+          <div className="hero-quote-container">
+            <span className="hero-quote-text">Success is a journey, not a destination</span>
             <span className="cyclist-wrapper">
               <span className="cyclist">🚴</span>
             </span>
