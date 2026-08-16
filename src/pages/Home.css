@@ -49,8 +49,8 @@
   z-index: 2;
   text-align: center;
   max-width: 800px;
-  padding: 6rem 1.5rem 0;
-  /* Increased top padding to push logo down */
+  padding: 4.5rem 1.5rem 0;
+  /* Reduced top padding */
 }
 
 /* Base State for Children - Staggered Reveal */
@@ -185,8 +185,8 @@
   font-size: 1.1rem;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 2rem;
-  /* Reduced from 3rem */
+  margin-bottom: 1rem;
+  /* Reduced from 2rem to prevent overlap */
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -200,7 +200,7 @@
 
 /* Revamped Quote Animation */
 .hero-quote-container {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0.8rem 2rem;
   background: rgba(255, 255, 255, 0.05);
   /* Glass pill */
@@ -211,7 +211,7 @@
   gap: 1rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   position: relative;
   transition: all 0.4s ease;
