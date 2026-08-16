@@ -106,7 +106,7 @@ const Home = () => {
 
           <div className="quote-box-simple">
             <span className="hero-quote-text">
-              "Success is a <span className="quote-green">journey</span>, not a <span className="quote-red">destination</span>"
+              <span className="quote-mark">"</span>Success is a <span className="quote-green">journey</span>, not a <span className="quote-red">destination</span><span className="quote-mark">"</span>
             </span>
             <span className="cyclist-wrapper-inline">
               <span className="speed-line speed-1"></span>
