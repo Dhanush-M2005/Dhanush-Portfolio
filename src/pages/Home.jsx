@@ -103,8 +103,13 @@ const Home = () => {
           <p className="hero-bio">
             Building practical <span className="highlight">digital solutions</span> through consistent learning and clean code. Interested in understanding systems, exploring new technologies, and solving <span className="highlight">real-world problems</span>.
             <br />
-            <span className="hero-quote-text"> Success is a journey, not a destination </span>
+            <span className="hero-quote-text">
+              Success is a <span className="quote-green">journey</span>, not a <span className="quote-red">destination</span>
+            </span>
             <span className="cyclist-wrapper-inline">
+              <span className="speed-line speed-1"></span>
+              <span className="speed-line speed-2"></span>
+              <span className="speed-line speed-3"></span>
               <span className="cyclist">🚴</span>
             </span>
           </p>
@@ -150,7 +155,6 @@ const Home = () => {
           <FaChevronDown className="chevron chevron-2" />
         </div>
       </div>
-
     </section>
   );
 };
