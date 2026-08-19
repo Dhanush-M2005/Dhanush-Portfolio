@@ -5,6 +5,7 @@ import './Home.css';
 import HeroLogo from '../components/HeroLogo';
 import logo from '../assets/logo.png';
 import useScrollReveal from '../hooks/useScrollReveal';
+import TechNetwork from '../components/TechNetwork';
 
 const Typewriter = ({ text, delay = 100 }) => {
   const [currentText, setCurrentText] = useState('');
@@ -86,7 +87,8 @@ const Home = () => {
     <section className="home-container home-section" id="home">
       {/* Background Ambience */}
       <div className="ambient-glow glow-1"></div>
-      <div className="ambient-glow glow-2"></div>
+
+      <TechNetwork />
 
       <div
         ref={ref}

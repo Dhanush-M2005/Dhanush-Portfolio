@@ -132,7 +132,7 @@
 }
 
 .name-title {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 0.2rem;
   line-height: 1.1;
@@ -140,7 +140,7 @@
 }
 
 .role-wrapper {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   color: var(--text-muted);
   font-weight: 600;
   margin-bottom: 0.2rem;
@@ -175,7 +175,7 @@
 }
 
 .hero-bio {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
   color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -208,7 +208,7 @@
 }
 
 .hero-quote-text {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
   font-style: italic;
   font-weight: 500;
   color: var(--text-main);
@@ -419,11 +419,11 @@
 }
 
 .btn {
-  padding: 0.8rem 1.8rem;
+  padding: clamp(0.7rem, 1vw, 0.8rem) clamp(1.2rem, 2vw, 1.8rem);
   /* Reduced padding */
   border-radius: 50px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
   text-decoration: none;
   transition: all 0.3s ease;
   display: flex;
@@ -461,15 +461,15 @@
 }
 
 .social-pill {
-  width: 45px;
-  height: 45px;
+  width: clamp(40px, 5vw, 45px);
+  height: clamp(40px, 5vw, 45px);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
   color: var(--text-muted);
   transition: all 0.3s ease;
 }
@@ -483,9 +483,11 @@
 
 /* Hyper-Modern Scroll Down Indicator */
 .scroll-indicator {
-  position: relative;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  position: absolute;
+  top: auto;
+  bottom: 12%;
+  right: 18%;
+  transform: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -495,6 +497,23 @@
   animation: bounceFloat 3s infinite ease-in-out;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+@media (max-width: 1024px) {
+  .hero-content {
+    padding-bottom: 6rem;
+  }
+
+  .scroll-indicator {
+    top: auto;
+    bottom: 2rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounceFloatMobile 3s infinite ease-in-out;
+  }
+}
+
+/* Removing mobile override query */
 
 .scroll-text {
   font-size: 0.72rem;
@@ -524,7 +543,8 @@
   border: 2px solid rgba(139, 92, 246, 0.4);
   border-radius: 20px;
   position: relative;
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(15, 23, 42, 0.85);
+  /* Increased opacity */
   backdrop-filter: blur(8px);
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.15), inset 0 0 10px rgba(6, 182, 212, 0.1);
   transition: all 0.3s ease;
@@ -582,7 +602,19 @@
   }
 
   50% {
-    transform: translateY(8px);
+    transform: translateY(12px);
+  }
+}
+
+@keyframes bounceFloatMobile {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(12px);
   }
 }
 
@@ -625,106 +657,10 @@
   }
 }
 
-@media (max-width: 768px) {
-  .hero-content {
-    padding-top: 5rem;
-  }
+/* Removed media queries that break formatting (Hero layout alignment stays strictly the same as requested) */
 
-  /* Mobile Staggered Entry - Hyper Modern Elastic Physics */
-  .hero-content>* {
-    opacity: 0;
-    /* Ensure hidden initially */
-    transform: translateY(60px);
-    /* Animation applied when active class is added or parent is active */
-  }
 
-  /* We need to trigger animation when parent is active */
-  .hero-content.active>* {
-    animation: elasticUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
-
-  /* Stagger Delays for Mobile */
-  .hero-content.active .profile-wrapper {
-    animation-delay: 0.1s;
-  }
-
-  .hero-content.active .greeting {
-    animation-delay: 0.2s;
-  }
-
-  .hero-content.active .name-title {
-    animation-delay: 0.3s;
-  }
-
-  .hero-content.active .role-wrapper {
-    animation-delay: 0.4s;
-  }
-
-  .hero-content.active .hero-bio {
-    animation-delay: 0.5s;
-  }
-
-  .hero-content.active .hero-actions {
-    animation-delay: 0.6s;
-  }
-
-  .hero-content.active .social-links {
-    animation-delay: 0.7s;
-  }
-
-  .name-title {
-    font-size: 2.5rem;
-    letter-spacing: -1px;
-  }
-
-  .role-wrapper {
-    font-size: 1.2rem;
-    min-height: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-bio {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Don't force full width buttons on tablets, only on mobile */
-  .hero-actions {
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 1rem;
-  }
-
-  .btn {
-    width: 100%;
-    justify-content: center;
-    /* Tactile Feedback for Mobile Touch */
-    transform: scale(1);
-    transition: transform 0.1s ease, background 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .btn:active {
-    transform: scale(0.96) !important;
-    /* Immediate feedback */
-  }
-
-  .social-pill {
-    /* Tactile Feedback */
-    transition: transform 0.1s ease, background 0.3s ease;
-  }
-
-  .social-pill:active {
-    transform: scale(0.9) !important;
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  .name-title {
-    font-size: 2.2rem;
-  }
+.social-pill:active {
+  transform: scale(0.9) !important;
+  background: rgba(255, 255, 255, 0.1);
 }

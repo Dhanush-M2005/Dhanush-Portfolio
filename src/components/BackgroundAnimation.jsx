@@ -7,18 +7,20 @@ const BackgroundAnimation = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
 
-        // Configuration
-        const config = {
-            particleCount: window.innerWidth < 768 ? 40 : 80,
-            connectionDistance: 150,
-            mouseRadius: 200,
-            baseSpeed: 0.5,
+        // Configuration generator
+        const getConfig = () => ({
+            particleCount: Math.max(25, Math.floor((window.innerWidth * window.innerHeight) / 22000)),
+            connectionDistance: window.innerWidth < 768 ? 85 : 130,
+            mouseRadius: window.innerWidth < 768 ? 120 : 220,
+            baseSpeed: window.innerWidth < 768 ? 0.3 : 0.6,
             colors: [
                 { r: 249, g: 115, b: 22 },  // Primary Orange
                 { r: 139, g: 92, b: 246 },  // Secondary Purple
                 { r: 6, g: 182, b: 212 }    // Accent Cyan
             ]
-        };
+        });
+
+        let config = getConfig();
 
         let width, height;
         let particles = [];
@@ -37,11 +39,11 @@ const BackgroundAnimation = () => {
                 this.y = Math.random() * height;
                 this.vx = (Math.random() - 0.5) * config.baseSpeed;
                 this.vy = (Math.random() - 0.5) * config.baseSpeed;
-                this.size = Math.random() * 2.5 + 1; // Slightly larger particles
+                this.size = Math.random() * 2.8 + 1.2; // Enhanced size variety
 
                 // Assign a color theme
                 this.colorTheme = config.colors[Math.floor(Math.random() * config.colors.length)];
-                this.alpha = Math.random() * 0.5 + 0.2; // Variable transparency
+                this.alpha = Math.random() * 0.6 + 0.2; // Enhanced transparency depth
             }
 
             draw() {
@@ -156,6 +158,7 @@ const BackgroundAnimation = () => {
         // Event Listeners
         const handleResize = () => {
             resize();
+            config = getConfig();
             init();
         };
 

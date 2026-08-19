@@ -1,0 +1,100 @@
+/* src/components/TechNetwork.css */
+
+.semi-circle-container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+    /* Center exactly on the right screen edge */
+    width: clamp(250px, 62vw, 900px);
+    height: clamp(250px, 62vw, 900px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.orbit-dashed-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.orbit-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.orbit-node-positioner {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: auto;
+    /* Allow interactions on the node */
+}
+
+/* Same styles for the icons */
+.tech-icon-wrapper {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    /* Using a circle for a planetary vibe */
+    width: clamp(25px, 4.2vw, 60px);
+    height: clamp(25px, 4.2vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Subtle glow behind icon */
+.tech-icon-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.tech-icon-wrapper:hover {
+    background: rgba(30, 41, 59, 1);
+    transform: scale(1.15);
+    z-index: 10;
+}
+
+/* Mobile Overrides (Background Halo Effect) */
+@media (max-width: 1024px) {
+    .semi-circle-container {
+        width: 800px;
+        height: 800px;
+        opacity: 0.6;
+        z-index: 0;
+    }
+
+    .tech-icon-wrapper {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .semi-circle-container {
+        width: 650px;
+        height: 650px;
+        opacity: 0.5;
+    }
+}
