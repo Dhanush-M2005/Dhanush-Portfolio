@@ -6,6 +6,7 @@ import HeroLogo from '../components/HeroLogo';
 import logo from '../assets/logo.png';
 import useScrollReveal from '../hooks/useScrollReveal';
 import TechNetwork from '../components/TechNetwork';
+import MindsetFlow from '../components/MindsetFlow';
 
 const Typewriter = ({ text, delay = 100 }) => {
   const [currentText, setCurrentText] = useState('');
@@ -88,6 +89,7 @@ const Home = () => {
       {/* Background Ambience */}
       <div className="ambient-glow glow-1"></div>
 
+      <MindsetFlow />
       <TechNetwork />
 
       <div
