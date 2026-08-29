@@ -8,7 +8,7 @@ import winnerTeamImg from '../assets/Winner-Team.webp';
 import chemovateImg from '../assets/CHEMOVATE.jpg';
 import innovathonImg from '../assets/INNOVATHON.jpg';
 import torquefestImg from '../assets/torquefest.png';
-import geminiHackdayImg from '../assets/gemini_hackday.png';
+import geminiHackdayImg from '../assets/gemini_hackday.jpg';
 import fieldToFutureImg from '../assets/field_to_future.jpg';
 import designForBharathImg from '../assets/design_for_bharath.jpg';
 import solveathonImg from '../assets/solveathon.jpg';
@@ -35,10 +35,10 @@ const AchievementRow = ({ achievement, index }) => {
             <div className="achievement-visual">
                 {achievement.image ? (
                     <div className="achievement-image-container hover-card">
-                        <img 
-                            src={achievement.image} 
-                            alt={achievement.name} 
-                            className={`achievement-img ${achievement.containImage ? 'contain-img' : ''}`} 
+                        <img
+                            src={achievement.image}
+                            alt={achievement.name}
+                            className={`achievement-img ${achievement.containImage ? 'contain-img' : ''}`}
                         />
                     </div>
                 ) : (
