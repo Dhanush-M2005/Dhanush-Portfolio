@@ -640,9 +640,12 @@
 }
 
 @keyframes bounceFloatUp {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -654,10 +657,12 @@
     opacity: 1;
     height: 9px;
   }
+
   50% {
     opacity: 0.9;
     height: 14px;
   }
+
   100% {
     transform: translate(-50%, -14px);
     opacity: 0;
@@ -666,10 +671,13 @@
 }
 
 @keyframes chevronUpPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.3;
     transform: translateY(2px) scale(0.9);
   }
+
   50% {
     opacity: 1;
     transform: translateY(-2px) scale(1.1);

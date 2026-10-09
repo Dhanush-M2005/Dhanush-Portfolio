@@ -149,7 +149,7 @@ function About() {
             clickable
             path="/achievement"
           />
-          <StatItem icon={<FaCode />} value="1500+" label="Problems Solved" delay={0} />
+          <StatItem icon={<FaCode />} value="1000+" label="Problems Solved" delay={0} />
           <StatItem icon={<FaRocket />} value="8+" label="Live Projects" delay={0} clickable path="/projects" />
           <StatItem
             icon={<FaAward />}

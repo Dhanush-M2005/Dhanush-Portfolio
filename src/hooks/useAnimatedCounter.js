@@ -3,9 +3,9 @@ import { useMotionValue, useTransform, animate } from "framer-motion";
 
 /**
  * Custom hook to animate a number from 0 to a specified value.
- * Handles integers, floats, and suffixes (e.g., "1500+", "8.29").
+ * Handles integers, floats, and suffixes (e.g., "1000+", "8.29").
  * 
- * @param {string|number} value - The target value to animate to (e.g., "1500+", 8.29).
+ * @param {string|number} value - The target value to animate to (e.g., "1000+", 8.29).
  * @param {boolean} inView - Whether the element is currently in view (to trigger animation).
  * @param {number} duration - Duration of the animation in seconds.
  * @param {number} delay - Delay before starting the animation in seconds.

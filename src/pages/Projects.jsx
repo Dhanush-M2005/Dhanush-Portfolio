@@ -200,7 +200,7 @@ function Projects() {
       demo: 'https://apexracetech.in/race-insight',
     },
     {
-      title: 'Premium Portfolio',
+      title: 'Portfolio',
       image: portfolioImg,
       description:
         'This very website. A showcase of modern web design principles, featuring fluid animations, glassmorphism, and a completely custom-built design system without component libraries.',
@@ -212,7 +212,7 @@ function Projects() {
       ],
       tech: ['React', 'CSS Variables', 'Vite', 'Framer Motion Concepts'],
       github: 'https://github.com/Dhanush-M2005/Dhanush-Portfolio',
-      demo: 'https://dhanush-m.web.app',
+      demo: '',
     },
     {
       title: 'Intelligent Chair System',
