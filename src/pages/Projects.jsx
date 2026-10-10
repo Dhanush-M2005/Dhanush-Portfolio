@@ -7,7 +7,6 @@ import './Projects.css';
 import icsImg from '../assets/ics.png';
 import portfolioImg from '../assets/dhanushpot.png';
 import ics1Img from '../assets/ics1.png';
-import raceImg from '../assets/race.png';
 import farmAppImg from '../assets/Farm App.png';
 
 import pythonAppImg from '../assets/python_App.png';
@@ -183,21 +182,6 @@ function Projects() {
       tech: ['Flutter', 'Dart', 'ESP32', 'Wi-Fi', 'Provider', 'fl_chart', 'CSV', 'vector_math'],
       github: 'https://github.com/Dhanush-M2005/Javelin_App',
       demo: '',
-    },
-    {
-      title: 'Race Insight',
-      image: raceImg,
-      description:
-        'A powerful desktop application built to monitor race drivers in real-time. It processes high-speed data to create a live, visual dashboard of race performance that works seamlessly across different operating systems.',
-      features: [
-        'Real-time Driver Tracking',
-        'Visual Race Telemetry',
-        'Live Data Dashboard',
-        'Cross-platform Architecture',
-      ],
-      tech: ['Rust', 'TypeScript', 'Electron', 'React'],
-      github: '',
-      demo: 'https://apexracetech.in/race-insight',
     },
     {
       title: 'Portfolio',
