@@ -74,10 +74,9 @@ const Chatbot = () => {
             ]
         },
         {
-            category: "Contact & Availability",
+            category: "Contact",
             items: [
-                { id: 'contact', question: "How can I contact Dhanush?", answer: "You can find him here:\n📧 Email: dhanushofficial2005@gmail.com\n🔗 LinkedIn: linkedin.com/in/dhanushm2005\n🐙 GitHub: github.com/Dhanush-M2005\n📍 Location: Chennai, Tamil Nadu, India" },
-                { id: 'availability', question: "Collaboration & Hiring?", answer: "🟢 Availability:\n• Full-time Opportunities (Open to roles starting 2027)\n• Freelance Projects\n• Collaborations & Open Source\nFeel free to fill out the form on the Contact section, and he will get back to you soon!" }
+                { id: 'contact', question: "How can I contact Dhanush?", answer: "You can find him here:\n📧 Email: dhanushofficial2005@gmail.com\n🔗 LinkedIn: linkedin.com/in/dhanushm2005\n🐙 GitHub: github.com/Dhanush-M2005" }
             ]
         }
     ];

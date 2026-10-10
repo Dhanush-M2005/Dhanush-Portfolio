@@ -2,12 +2,10 @@
 import { useState, useEffect } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import {
-  FaMapMarkerAlt,
   FaPaperPlane,
   FaLinkedin,
   FaGithub,
   FaEnvelope,
-  FaBriefcase,
   FaCheckCircle,
   FaChevronUp
 } from 'react-icons/fa';
@@ -15,160 +13,36 @@ import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
-// Ultra-Modern Success Animation Component
+// GenZ Toast Notification Component
 const SuccessModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     let timer;
     if (isOpen) {
       timer = setTimeout(() => {
         onClose();
-      }, 2000);
+      }, 3000); // Wait 3s before hiding
     }
     return () => clearTimeout(timer);
   }, [isOpen, onClose]);
-
-  // Confetti particles with varied properties
-  const confetti = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    x: (Math.random() - 0.5) * 400,
-    y: (Math.random() - 0.5) * 400 - 100,
-    rotation: Math.random() * 720,
-    scale: 0.5 + Math.random() * 1,
-    color: ['#10b981', '#34d399', '#6ee7b7', '#f59e0b', '#fbbf24', '#a78bfa', '#818cf8'][Math.floor(Math.random() * 7)],
-    delay: Math.random() * 0.3,
-  }));
-
-  // Sparkle stars
-  const sparkles = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    angle: (i * 45) * (Math.PI / 180),
-    distance: 80 + Math.random() * 40,
-    delay: i * 0.05,
-  }));
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="success-overlay-modern"
+          className="genz-toast-overlay"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
         >
-          {/* Animated Background Gradient */}
           <motion.div
-            className="success-bg-gradient"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1.5, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          />
-
-          {/* Confetti Explosion */}
-          {confetti.map((item) => (
-            <motion.div
-              key={item.id}
-              className="confetti-piece"
-              style={{
-                backgroundColor: item.color,
-                width: `${6 + item.scale * 6}px`,
-                height: `${6 + item.scale * 6}px`,
-              }}
-              initial={{ x: 0, y: 0, rotate: 0, scale: 0, opacity: 1 }}
-              animate={{
-                x: item.x,
-                y: item.y,
-                rotate: item.rotation,
-                scale: item.scale,
-                opacity: 0,
-              }}
-              transition={{
-                duration: 1.2,
-                delay: item.delay,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-            />
-          ))}
-
-          {/* Sparkle Stars */}
-          {sparkles.map((star) => (
-            <motion.div
-              key={star.id}
-              className="sparkle-star"
-              initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
-              animate={{
-                x: Math.cos(star.angle) * star.distance,
-                y: Math.sin(star.angle) * star.distance,
-                scale: [0, 1.5, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{ duration: 0.8, delay: 0.2 + star.delay, ease: "easeOut" }}
-            />
-          ))}
-
-          {/* Outer Ring Pulse */}
-          <motion.div
-            className="success-ring-outer"
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: [0.5, 1.2, 1.4], opacity: [0, 0.8, 0] }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          />
-
-          {/* Inner Ring with Rotating Border */}
-          <motion.div
-            className="success-ring-inner"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
+            className="genz-toast-pill"
+            initial={{ y: 100, scale: 0.5, opacity: 0 }}
+            animate={{ y: 0, scale: 1, opacity: 1 }}
+            exit={{ y: 50, scale: 0.8, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
-            <motion.div
-              className="rotating-border"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
-
-            {/* Glass Container */}
-            <motion.div
-              className="success-glass-container"
-              initial={{ scale: 0, rotate: -90 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", stiffness: 150, damping: 12, delay: 0.15 }}
-            >
-              <motion.svg className="success-check-svg" viewBox="0 0 52 52">
-                <motion.circle
-                  cx="26" cy="26" r="23"
-                  fill="none" stroke="url(#successGradient)" strokeWidth="2"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: "easeInOut" }}
-                />
-                <motion.path
-                  d="M15 26l7 7 15-15"
-                  fill="none" stroke="url(#successGradient)" strokeWidth="3.5"
-                  strokeLinecap="round" strokeLinejoin="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-                />
-                <defs>
-                  <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#10b981" />
-                    <stop offset="50%" stopColor="#34d399" />
-                    <stop offset="100%" stopColor="#6ee7b7" />
-                  </linearGradient>
-                </defs>
-              </motion.svg>
-            </motion.div>
-          </motion.div>
-
-          {/* Success Text */}
-          <motion.div
-            className="success-text-modern"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.5, ease: "easeOut" }}
-          >
-            Sent!
+            <span className="genz-toast-emoji">🚀</span>
+            <span className="genz-toast-text">Bet. Message Sent!</span>
           </motion.div>
         </motion.div>
       )}
@@ -185,6 +59,7 @@ function Contact() {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   // Scroll Animations
   const [headerRef, headerVisible] = useScrollReveal();
@@ -196,10 +71,24 @@ function Contact() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (errorMsg) setErrorMsg(''); // clear error when they start typing
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Gen Z Validation Check
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setErrorMsg("Hold up, you missed some fields! 👀");
+      return;
+    }
+
+    // Email format validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      setErrorMsg("That doesn't look like a valid email! 🛑");
+      return;
+    }
 
     // UI Loading State
     const submitBtn = e.target.querySelector('button[type="submit"]');
@@ -284,7 +173,16 @@ function Contact() {
         <div className="contact-layout">
           {/* Contact Info Side */}
           <div className={`contact-info-wrapper ${infoVisible ? 'active' : ''}`} ref={infoRef}>
-            <div className="info-glass-card hover-card">
+            <div className="info-glass-card hover-card" style={{ padding: '1.5rem', borderRadius: '16px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+              <h3 style={{ color: '#fff', marginBottom: '0.8rem', fontSize: '1.3rem' }}>
+                Hit My Line <span className="bounce-right">👉</span>
+              </h3>
+              <p className="contact-promise" style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '1rem', margin: 0 }}>
+                I'm always open to discussing new projects, creative ideas, or opportunities. Drop a message, and I will reply as fast as possible!
+              </p>
+            </div>
+
+            <div className="info-glass-card mt-4 hover-card">
               <h3>Contact Information</h3>
               <div className="info-item">
                 <div className="icon-circle orange"><FaEnvelope /></div>
@@ -307,28 +205,12 @@ function Contact() {
                   <a href="https://github.com/Dhanush-M2005" target="_blank" rel="noreferrer" className="value">Github Profile</a>
                 </div>
               </div>
-              <div className="info-item">
-                <div className="icon-circle purple"><FaMapMarkerAlt /></div>
-                <div>
-                  <p className="label">Location</p>
-                  <a href="https://www.google.com/maps/search/?api=1&query=Sri+Sairam+Engineering+College+Chennai" target="_blank" rel="noopener noreferrer" className="value">Chennai, Tamil Nadu, India</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="info-glass-card mt-4 hover-card">
-              <h3>Availability</h3>
-              <div className="availability-list">
-                <div className="avail-item"><FaBriefcase className="check-icon" /> Full-time Opportunities</div>
-                <div className="avail-item"><FaBriefcase className="check-icon" /> Freelance Projects</div>
-                <div className="avail-item"><FaBriefcase className="check-icon" /> Collaborations</div>
-              </div>
             </div>
           </div>
 
           {/* Form Side */}
           <div className={`contact-form-wrapper ${formVisible ? 'active' : ''}`} ref={formRef}>
-            <form className="glass-form hover-card" onSubmit={handleSubmit}>
+            <form className="glass-form hover-card" onSubmit={handleSubmit} noValidate>
               <div className="form-group">
                 <label>Your Name</label>
                 <input
@@ -336,7 +218,6 @@ function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
                   placeholder="John Doe"
                 />
               </div>
@@ -347,7 +228,6 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                   placeholder="john@example.com"
                 />
               </div>
@@ -358,7 +238,6 @@ function Contact() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  required
                   placeholder="Project Inquiry"
                 />
               </div>
@@ -369,10 +248,20 @@ function Contact() {
                   rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                   placeholder="Tell me about your project..."
                 ></textarea>
               </div>
+
+              {errorMsg && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="contact-error-msg"
+                  style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '0.95rem', fontWeight: '500' }}
+                >
+                  {errorMsg}
+                </motion.div>
+              )}
 
               <button type="submit" className="submit-btn full-width">
                 Send Message <FaPaperPlane />
